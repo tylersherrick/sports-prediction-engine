@@ -1,0 +1,598 @@
+{
+  "id": "401671716",
+  "uid": "s:20~l:28~e:401671716",
+  "date": "2024-09-15T17:00Z",
+  "name": "New York Giants at Washington Commanders",
+  "shortName": "NYG @ WSH",
+  "season": {
+    "year": 2024,
+    "type": 2,
+    "slug": "regular-season"
+  },
+  "week": {
+    "number": 2
+  },
+  "competitions": [
+    {
+      "id": "401671716",
+      "uid": "s:20~l:28~e:401671716~c:401671716",
+      "date": "2024-09-15T17:00Z",
+      "attendance": 61841,
+      "type": {
+        "id": "1",
+        "abbreviation": "STD"
+      },
+      "timeValid": true,
+      "neutralSite": false,
+      "conferenceCompetition": false,
+      "playByPlayAvailable": true,
+      "recent": false,
+      "venue": {
+        "id": "3719",
+        "fullName": "Northwest Stadium",
+        "address": {
+          "city": "Landover",
+          "state": "MD",
+          "country": "USA"
+        },
+        "indoor": false
+      },
+      "competitors": [
+        {
+          "id": "28",
+          "uid": "s:20~l:28~t:28",
+          "type": "team",
+          "order": 0,
+          "homeAway": "home",
+          "winner": true,
+          "team": {
+            "id": "28",
+            "uid": "s:20~l:28~t:28",
+            "location": "Washington",
+            "name": "Commanders",
+            "abbreviation": "WSH",
+            "displayName": "Washington Commanders",
+            "shortDisplayName": "Commanders",
+            "color": "5a1414",
+            "alternateColor": "ffb612",
+            "isActive": true,
+            "venue": {
+              "id": "3719"
+            },
+            "links": [
+              {
+                "rel": [
+                  "clubhouse",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/_/name/wsh/washington-commanders",
+                "text": "Clubhouse",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "roster",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/roster/_/name/wsh/washington-commanders",
+                "text": "Roster",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "roster",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:28&section=roster",
+                "text": "Roster",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "stats",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/stats/_/name/wsh/washington-commanders",
+                "text": "Statistics",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "stats",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:28&section=stats",
+                "text": "Statistics",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "schedule",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/schedule/_/name/wsh",
+                "text": "Schedule",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "schedule",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:28&section=scores",
+                "text": "Schedule",
+                "isExternal": false,
+                "isPremium": false
+              }
+            ],
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/wsh.png"
+          },
+          "score": "21",
+          "linescores": [
+            {
+              "value": 3.0,
+              "displayValue": "3",
+              "period": 1
+            },
+            {
+              "value": 6.0,
+              "displayValue": "6",
+              "period": 2
+            },
+            {
+              "value": 6.0,
+              "displayValue": "6",
+              "period": 3
+            },
+            {
+              "value": 6.0,
+              "displayValue": "6",
+              "period": 4
+            }
+          ],
+          "statistics": [],
+          "curatedRank": {
+            "current": 99
+          },
+          "records": [
+            {
+              "name": "overall",
+              "abbreviation": "Game",
+              "type": "total",
+              "summary": "1-1"
+            },
+            {
+              "name": "Home",
+              "type": "home",
+              "summary": "1-0"
+            },
+            {
+              "name": "Road",
+              "type": "road",
+              "summary": "0-1"
+            }
+          ]
+        },
+        {
+          "id": "19",
+          "uid": "s:20~l:28~t:19",
+          "type": "team",
+          "order": 1,
+          "homeAway": "away",
+          "winner": false,
+          "team": {
+            "id": "19",
+            "uid": "s:20~l:28~t:19",
+            "location": "New York",
+            "name": "Giants",
+            "abbreviation": "NYG",
+            "displayName": "New York Giants",
+            "shortDisplayName": "Giants",
+            "color": "003c7f",
+            "alternateColor": "c9243f",
+            "isActive": true,
+            "venue": {
+              "id": "3839"
+            },
+            "links": [
+              {
+                "rel": [
+                  "clubhouse",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/_/name/nyg/new-york-giants",
+                "text": "Clubhouse",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "roster",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/roster/_/name/nyg/new-york-giants",
+                "text": "Roster",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "roster",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:19&section=roster",
+                "text": "Roster",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "stats",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/stats/_/name/nyg/new-york-giants",
+                "text": "Statistics",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "stats",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:19&section=stats",
+                "text": "Statistics",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "schedule",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/schedule/_/name/nyg",
+                "text": "Schedule",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "schedule",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:19&section=scores",
+                "text": "Schedule",
+                "isExternal": false,
+                "isPremium": false
+              }
+            ],
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/nyg.png"
+          },
+          "score": "18",
+          "linescores": [
+            {
+              "value": 6.0,
+              "displayValue": "6",
+              "period": 1
+            },
+            {
+              "value": 6.0,
+              "displayValue": "6",
+              "period": 2
+            },
+            {
+              "value": 0.0,
+              "displayValue": "0",
+              "period": 3
+            },
+            {
+              "value": 6.0,
+              "displayValue": "6",
+              "period": 4
+            }
+          ],
+          "statistics": [],
+          "curatedRank": {
+            "current": 99
+          },
+          "records": [
+            {
+              "name": "overall",
+              "abbreviation": "Game",
+              "type": "total",
+              "summary": "0-2"
+            },
+            {
+              "name": "Home",
+              "type": "home",
+              "summary": "0-1"
+            },
+            {
+              "name": "Road",
+              "type": "road",
+              "summary": "0-1"
+            }
+          ]
+        }
+      ],
+      "notes": [],
+      "status": {
+        "clock": 0.0,
+        "displayClock": "0:00",
+        "period": 4,
+        "type": {
+          "id": "3",
+          "name": "STATUS_FINAL",
+          "state": "post",
+          "completed": true,
+          "description": "Final",
+          "detail": "Final",
+          "shortDetail": "Final"
+        },
+        "isTBDFlex": false
+      },
+      "broadcasts": [
+        {
+          "market": "national",
+          "names": [
+            "FOX"
+          ]
+        },
+        {
+          "market": "away",
+          "names": [
+            "NFL Sunday Ticket"
+          ]
+        }
+      ],
+      "leaders": [
+        {
+          "name": "passingYards",
+          "displayName": "Passing Leader",
+          "shortDisplayName": "PASS",
+          "abbreviation": "PYDS",
+          "leaders": [
+            {
+              "displayValue": "23/29, 226 YDS",
+              "value": 226.0,
+              "athlete": {
+                "id": "4426348",
+                "fullName": "Jayden Daniels",
+                "displayName": "Jayden Daniels",
+                "shortName": "J. Daniels",
+                "links": [
+                  {
+                    "rel": [
+                      "playercard",
+                      "desktop",
+                      "athlete"
+                    ],
+                    "href": "https://www.espn.com/nfl/player/_/id/4426348/jayden-daniels"
+                  }
+                ],
+                "headshot": "https://a.espncdn.com/i/headshots/nfl/players/full/4426348.png",
+                "jersey": "5",
+                "position": {
+                  "abbreviation": "QB"
+                },
+                "team": {
+                  "id": "28"
+                },
+                "active": true
+              },
+              "team": {
+                "id": "28"
+              }
+            }
+          ]
+        },
+        {
+          "name": "rushingYards",
+          "displayName": "Rushing Leader",
+          "shortDisplayName": "RUSH",
+          "abbreviation": "RYDS",
+          "leaders": [
+            {
+              "displayValue": "17 CAR, 133 YDS",
+              "value": 133.0,
+              "athlete": {
+                "id": "4241474",
+                "fullName": "Brian Robinson Jr.",
+                "displayName": "Brian Robinson Jr.",
+                "shortName": "B. Robinson Jr.",
+                "links": [
+                  {
+                    "rel": [
+                      "playercard",
+                      "desktop",
+                      "athlete"
+                    ],
+                    "href": "https://www.espn.com/nfl/player/_/id/4241474/brian-robinson-jr"
+                  }
+                ],
+                "headshot": "https://a.espncdn.com/i/headshots/nfl/players/full/4241474.png",
+                "jersey": "15",
+                "position": {
+                  "abbreviation": "RB"
+                },
+                "team": {
+                  "id": "28"
+                },
+                "active": true
+              },
+              "team": {
+                "id": "28"
+              }
+            }
+          ]
+        },
+        {
+          "name": "receivingYards",
+          "displayName": "Receiving Leader",
+          "shortDisplayName": "REC",
+          "abbreviation": "RECYDS",
+          "leaders": [
+            {
+              "displayValue": "10 REC, 127 YDS, 1 TD",
+              "value": 127.0,
+              "athlete": {
+                "id": "4595348",
+                "fullName": "Malik Nabers",
+                "displayName": "Malik Nabers",
+                "shortName": "M. Nabers",
+                "links": [
+                  {
+                    "rel": [
+                      "playercard",
+                      "desktop",
+                      "athlete"
+                    ],
+                    "href": "https://www.espn.com/nfl/player/_/id/4595348/malik-nabers"
+                  }
+                ],
+                "headshot": "https://a.espncdn.com/i/headshots/nfl/players/full/4595348.png",
+                "jersey": "1",
+                "position": {
+                  "abbreviation": "WR"
+                },
+                "team": {
+                  "id": "19"
+                },
+                "active": true
+              },
+              "team": {
+                "id": "19"
+              }
+            }
+          ]
+        }
+      ],
+      "format": {
+        "regulation": {
+          "periods": 4
+        }
+      },
+      "startDate": "2024-09-15T17:00Z",
+      "broadcast": "FOX",
+      "geoBroadcasts": [
+        {
+          "type": {
+            "id": "1",
+            "shortName": "TV"
+          },
+          "market": {
+            "id": "1",
+            "type": "National"
+          },
+          "media": {
+            "shortName": "FOX"
+          },
+          "lang": "en",
+          "region": "us"
+        }
+      ],
+      "highlights": [],
+      "headlines": [
+        {
+          "type": "Recap",
+          "description": "\u2014 Jayden Daniels got the wind knocked out of him, missed a snap and came back like nothing went wrong. He led the Washington Commanders down...",
+          "shortLinkText": "Jayden Daniels gets his 1st NFL win as Commanders beat Giants on 7 field goals by Austin Seibert"
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "language": "en-US",
+      "rel": [
+        "summary",
+        "desktop",
+        "event"
+      ],
+      "href": "https://www.espn.com/nfl/game/_/gameId/401671716/giants-commanders",
+      "text": "Gamecast",
+      "shortText": "Gamecast",
+      "isExternal": false,
+      "isPremium": false
+    },
+    {
+      "language": "en-US",
+      "rel": [
+        "boxscore",
+        "desktop",
+        "event"
+      ],
+      "href": "https://www.espn.com/nfl/boxscore/_/gameId/401671716",
+      "text": "Box Score",
+      "shortText": "Box Score",
+      "isExternal": false,
+      "isPremium": false
+    },
+    {
+      "language": "en-US",
+      "rel": [
+        "pbp",
+        "desktop",
+        "event"
+      ],
+      "href": "https://www.espn.com/nfl/playbyplay/_/gameId/401671716",
+      "text": "Play-by-Play",
+      "shortText": "Play-by-Play",
+      "isExternal": false,
+      "isPremium": false
+    },
+    {
+      "language": "en-US",
+      "rel": [
+        "recap",
+        "desktop",
+        "event"
+      ],
+      "href": "https://www.espn.com/nfl/recap?gameId=401671716",
+      "text": "Recap",
+      "shortText": "Recap",
+      "isExternal": false,
+      "isPremium": false
+    }
+  ],
+  "status": {
+    "clock": 0.0,
+    "displayClock": "0:00",
+    "period": 4,
+    "type": {
+      "id": "3",
+      "name": "STATUS_FINAL",
+      "state": "post",
+      "completed": true,
+      "description": "Final",
+      "detail": "Final",
+      "shortDetail": "Final"
+    }
+  }
+}

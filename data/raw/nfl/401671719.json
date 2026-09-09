@@ -1,0 +1,598 @@
+{
+  "id": "401671719",
+  "uid": "s:20~l:28~e:401671719",
+  "date": "2024-09-08T17:00Z",
+  "name": "Tennessee Titans at Chicago Bears",
+  "shortName": "TEN @ CHI",
+  "season": {
+    "year": 2024,
+    "type": 2,
+    "slug": "regular-season"
+  },
+  "week": {
+    "number": 1
+  },
+  "competitions": [
+    {
+      "id": "401671719",
+      "uid": "s:20~l:28~e:401671719~c:401671719",
+      "date": "2024-09-08T17:00Z",
+      "attendance": 59403,
+      "type": {
+        "id": "1",
+        "abbreviation": "STD"
+      },
+      "timeValid": true,
+      "neutralSite": false,
+      "conferenceCompetition": false,
+      "playByPlayAvailable": true,
+      "recent": false,
+      "venue": {
+        "id": "3933",
+        "fullName": "Soldier Field",
+        "address": {
+          "city": "Chicago",
+          "state": "IL",
+          "country": "USA"
+        },
+        "indoor": false
+      },
+      "competitors": [
+        {
+          "id": "3",
+          "uid": "s:20~l:28~t:3",
+          "type": "team",
+          "order": 0,
+          "homeAway": "home",
+          "winner": true,
+          "team": {
+            "id": "3",
+            "uid": "s:20~l:28~t:3",
+            "location": "Chicago",
+            "name": "Bears",
+            "abbreviation": "CHI",
+            "displayName": "Chicago Bears",
+            "shortDisplayName": "Bears",
+            "color": "0b1c3a",
+            "alternateColor": "e64100",
+            "isActive": true,
+            "venue": {
+              "id": "3933"
+            },
+            "links": [
+              {
+                "rel": [
+                  "clubhouse",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/_/name/chi/chicago-bears",
+                "text": "Clubhouse",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "roster",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/roster/_/name/chi/chicago-bears",
+                "text": "Roster",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "roster",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:3&section=roster",
+                "text": "Roster",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "stats",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/stats/_/name/chi/chicago-bears",
+                "text": "Statistics",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "stats",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:3&section=stats",
+                "text": "Statistics",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "schedule",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/schedule/_/name/chi",
+                "text": "Schedule",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "schedule",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:3&section=scores",
+                "text": "Schedule",
+                "isExternal": false,
+                "isPremium": false
+              }
+            ],
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/chi.png"
+          },
+          "score": "24",
+          "linescores": [
+            {
+              "value": 0.0,
+              "displayValue": "0",
+              "period": 1
+            },
+            {
+              "value": 3.0,
+              "displayValue": "3",
+              "period": 2
+            },
+            {
+              "value": 7.0,
+              "displayValue": "7",
+              "period": 3
+            },
+            {
+              "value": 14.0,
+              "displayValue": "14",
+              "period": 4
+            }
+          ],
+          "statistics": [],
+          "curatedRank": {
+            "current": 99
+          },
+          "records": [
+            {
+              "name": "overall",
+              "abbreviation": "Game",
+              "type": "total",
+              "summary": "1-0"
+            },
+            {
+              "name": "Home",
+              "type": "home",
+              "summary": "1-0"
+            },
+            {
+              "name": "Road",
+              "type": "road",
+              "summary": "0-0"
+            }
+          ]
+        },
+        {
+          "id": "10",
+          "uid": "s:20~l:28~t:10",
+          "type": "team",
+          "order": 1,
+          "homeAway": "away",
+          "winner": false,
+          "team": {
+            "id": "10",
+            "uid": "s:20~l:28~t:10",
+            "location": "Tennessee",
+            "name": "Titans",
+            "abbreviation": "TEN",
+            "displayName": "Tennessee Titans",
+            "shortDisplayName": "Titans",
+            "color": "4b92db",
+            "alternateColor": "001532",
+            "isActive": true,
+            "venue": {
+              "id": "3810"
+            },
+            "links": [
+              {
+                "rel": [
+                  "clubhouse",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/_/name/ten/tennessee-titans",
+                "text": "Clubhouse",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "roster",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/roster/_/name/ten/tennessee-titans",
+                "text": "Roster",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "roster",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:10&section=roster",
+                "text": "Roster",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "stats",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/stats/_/name/ten/tennessee-titans",
+                "text": "Statistics",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "stats",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:10&section=stats",
+                "text": "Statistics",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "schedule",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/schedule/_/name/ten",
+                "text": "Schedule",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "schedule",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:10&section=scores",
+                "text": "Schedule",
+                "isExternal": false,
+                "isPremium": false
+              }
+            ],
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ten.png"
+          },
+          "score": "17",
+          "linescores": [
+            {
+              "value": 7.0,
+              "displayValue": "7",
+              "period": 1
+            },
+            {
+              "value": 10.0,
+              "displayValue": "10",
+              "period": 2
+            },
+            {
+              "value": 0.0,
+              "displayValue": "0",
+              "period": 3
+            },
+            {
+              "value": 0.0,
+              "displayValue": "0",
+              "period": 4
+            }
+          ],
+          "statistics": [],
+          "curatedRank": {
+            "current": 99
+          },
+          "records": [
+            {
+              "name": "overall",
+              "abbreviation": "Game",
+              "type": "total",
+              "summary": "0-1"
+            },
+            {
+              "name": "Home",
+              "type": "home",
+              "summary": "0-0"
+            },
+            {
+              "name": "Road",
+              "type": "road",
+              "summary": "0-1"
+            }
+          ]
+        }
+      ],
+      "notes": [],
+      "status": {
+        "clock": 0.0,
+        "displayClock": "0:00",
+        "period": 4,
+        "type": {
+          "id": "3",
+          "name": "STATUS_FINAL",
+          "state": "post",
+          "completed": true,
+          "description": "Final",
+          "detail": "Final",
+          "shortDetail": "Final"
+        },
+        "isTBDFlex": false
+      },
+      "broadcasts": [
+        {
+          "market": "national",
+          "names": [
+            "FOX"
+          ]
+        },
+        {
+          "market": "away",
+          "names": [
+            "NFL Sunday Ticket"
+          ]
+        }
+      ],
+      "leaders": [
+        {
+          "name": "passingYards",
+          "displayName": "Passing Leader",
+          "shortDisplayName": "PASS",
+          "abbreviation": "PYDS",
+          "leaders": [
+            {
+              "displayValue": "19/32, 127 YDS, 1 TD, 2 INT",
+              "value": 127.0,
+              "athlete": {
+                "id": "4361418",
+                "fullName": "Will Levis",
+                "displayName": "Will Levis",
+                "shortName": "W. Levis",
+                "links": [
+                  {
+                    "rel": [
+                      "playercard",
+                      "desktop",
+                      "athlete"
+                    ],
+                    "href": "https://www.espn.com/nfl/player/_/id/4361418/will-levis"
+                  }
+                ],
+                "headshot": "https://a.espncdn.com/i/headshots/nfl/players/full/4361418.png",
+                "jersey": "8",
+                "position": {
+                  "abbreviation": "QB"
+                },
+                "team": {
+                  "id": "10"
+                },
+                "active": true
+              },
+              "team": {
+                "id": "10"
+              }
+            }
+          ]
+        },
+        {
+          "name": "rushingYards",
+          "displayName": "Rushing Leader",
+          "shortDisplayName": "RUSH",
+          "abbreviation": "RYDS",
+          "leaders": [
+            {
+              "displayValue": "16 CAR, 82 YDS, 1 TD",
+              "value": 82.0,
+              "athlete": {
+                "id": "3916148",
+                "fullName": "Tony Pollard",
+                "displayName": "Tony Pollard",
+                "shortName": "T. Pollard",
+                "links": [
+                  {
+                    "rel": [
+                      "playercard",
+                      "desktop",
+                      "athlete"
+                    ],
+                    "href": "https://www.espn.com/nfl/player/_/id/3916148/tony-pollard"
+                  }
+                ],
+                "headshot": "https://a.espncdn.com/i/headshots/nfl/players/full/3916148.png",
+                "jersey": "20",
+                "position": {
+                  "abbreviation": "RB"
+                },
+                "team": {
+                  "id": "10"
+                },
+                "active": true
+              },
+              "team": {
+                "id": "10"
+              }
+            }
+          ]
+        },
+        {
+          "name": "receivingYards",
+          "displayName": "Receiving Leader",
+          "shortDisplayName": "REC",
+          "abbreviation": "RECYDS",
+          "leaders": [
+            {
+              "displayValue": "3 REC, 50 YDS",
+              "value": 50.0,
+              "athlete": {
+                "id": "3925357",
+                "fullName": "Calvin Ridley",
+                "displayName": "Calvin Ridley",
+                "shortName": "C. Ridley",
+                "links": [
+                  {
+                    "rel": [
+                      "playercard",
+                      "desktop",
+                      "athlete"
+                    ],
+                    "href": "https://www.espn.com/nfl/player/_/id/3925357/calvin-ridley"
+                  }
+                ],
+                "headshot": "https://a.espncdn.com/i/headshots/nfl/players/full/3925357.png",
+                "jersey": "0",
+                "position": {
+                  "abbreviation": "WR"
+                },
+                "team": {
+                  "id": "10"
+                },
+                "active": true
+              },
+              "team": {
+                "id": "10"
+              }
+            }
+          ]
+        }
+      ],
+      "format": {
+        "regulation": {
+          "periods": 4
+        }
+      },
+      "startDate": "2024-09-08T17:00Z",
+      "broadcast": "FOX",
+      "geoBroadcasts": [
+        {
+          "type": {
+            "id": "1",
+            "shortName": "TV"
+          },
+          "market": {
+            "id": "1",
+            "type": "National"
+          },
+          "media": {
+            "shortName": "FOX"
+          },
+          "lang": "en",
+          "region": "us"
+        }
+      ],
+      "headlines": [
+        {
+          "type": "Recap",
+          "description": "\u2014 This wasn't exactly the debut Caleb Williams envisioned. Good thing for him, his defense made just enough plays.",
+          "shortLinkText": "Caleb Williams has a rough debut but gets bailed out by Bears' defense in 24-17 win over Titans"
+        }
+      ],
+      "highlights": []
+    }
+  ],
+  "links": [
+    {
+      "language": "en-US",
+      "rel": [
+        "summary",
+        "desktop",
+        "event"
+      ],
+      "href": "https://www.espn.com/nfl/game/_/gameId/401671719/titans-bears",
+      "text": "Gamecast",
+      "shortText": "Gamecast",
+      "isExternal": false,
+      "isPremium": false
+    },
+    {
+      "language": "en-US",
+      "rel": [
+        "boxscore",
+        "desktop",
+        "event"
+      ],
+      "href": "https://www.espn.com/nfl/boxscore/_/gameId/401671719",
+      "text": "Box Score",
+      "shortText": "Box Score",
+      "isExternal": false,
+      "isPremium": false
+    },
+    {
+      "language": "en-US",
+      "rel": [
+        "pbp",
+        "desktop",
+        "event"
+      ],
+      "href": "https://www.espn.com/nfl/playbyplay/_/gameId/401671719",
+      "text": "Play-by-Play",
+      "shortText": "Play-by-Play",
+      "isExternal": false,
+      "isPremium": false
+    },
+    {
+      "language": "en-US",
+      "rel": [
+        "recap",
+        "desktop",
+        "event"
+      ],
+      "href": "https://www.espn.com/nfl/recap?gameId=401671719",
+      "text": "Recap",
+      "shortText": "Recap",
+      "isExternal": false,
+      "isPremium": false
+    }
+  ],
+  "status": {
+    "clock": 0.0,
+    "displayClock": "0:00",
+    "period": 4,
+    "type": {
+      "id": "3",
+      "name": "STATUS_FINAL",
+      "state": "post",
+      "completed": true,
+      "description": "Final",
+      "detail": "Final",
+      "shortDetail": "Final"
+    }
+  }
+}

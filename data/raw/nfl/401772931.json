@@ -1,0 +1,616 @@
+{
+  "id": "401772931",
+  "uid": "s:20~l:28~e:401772931",
+  "date": "2025-12-01T01:20Z",
+  "name": "Denver Broncos at Washington Commanders",
+  "shortName": "DEN @ WSH",
+  "season": {
+    "year": 2025,
+    "type": 2,
+    "slug": "regular-season"
+  },
+  "week": {
+    "number": 13
+  },
+  "competitions": [
+    {
+      "id": "401772931",
+      "uid": "s:20~l:28~e:401772931~c:401772931",
+      "date": "2025-12-01T01:20Z",
+      "attendance": 63159,
+      "type": {
+        "id": "1",
+        "abbreviation": "STD"
+      },
+      "timeValid": true,
+      "neutralSite": false,
+      "conferenceCompetition": false,
+      "playByPlayAvailable": true,
+      "recent": false,
+      "venue": {
+        "id": "3719",
+        "fullName": "Northwest Stadium",
+        "address": {
+          "city": "Landover",
+          "state": "MD",
+          "country": "USA"
+        },
+        "indoor": false
+      },
+      "competitors": [
+        {
+          "id": "28",
+          "uid": "s:20~l:28~t:28",
+          "type": "team",
+          "order": 0,
+          "homeAway": "home",
+          "winner": false,
+          "team": {
+            "id": "28",
+            "uid": "s:20~l:28~t:28",
+            "location": "Washington",
+            "name": "Commanders",
+            "abbreviation": "WSH",
+            "displayName": "Washington Commanders",
+            "shortDisplayName": "Commanders",
+            "color": "5a1414",
+            "alternateColor": "ffb612",
+            "isActive": true,
+            "venue": {
+              "id": "3719"
+            },
+            "links": [
+              {
+                "rel": [
+                  "clubhouse",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/_/name/wsh/washington-commanders",
+                "text": "Clubhouse",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "roster",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/roster/_/name/wsh/washington-commanders",
+                "text": "Roster",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "roster",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:28&section=roster",
+                "text": "Roster",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "stats",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/stats/_/name/wsh/washington-commanders",
+                "text": "Statistics",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "stats",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:28&section=stats",
+                "text": "Statistics",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "schedule",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/schedule/_/name/wsh",
+                "text": "Schedule",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "schedule",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:28&section=scores",
+                "text": "Schedule",
+                "isExternal": false,
+                "isPremium": false
+              }
+            ],
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/wsh.png"
+          },
+          "score": "26",
+          "linescores": [
+            {
+              "value": 0.0,
+              "displayValue": "0",
+              "period": 1
+            },
+            {
+              "value": 7.0,
+              "displayValue": "7",
+              "period": 2
+            },
+            {
+              "value": 7.0,
+              "displayValue": "7",
+              "period": 3
+            },
+            {
+              "value": 6.0,
+              "displayValue": "6",
+              "period": 4
+            },
+            {
+              "value": 6.0,
+              "displayValue": "6",
+              "period": 5
+            }
+          ],
+          "statistics": [],
+          "curatedRank": {
+            "current": 99
+          },
+          "records": [
+            {
+              "name": "overall",
+              "abbreviation": "Game",
+              "type": "total",
+              "summary": "3-9"
+            },
+            {
+              "name": "Home",
+              "type": "home",
+              "summary": "2-4"
+            },
+            {
+              "name": "Road",
+              "type": "road",
+              "summary": "1-5"
+            }
+          ]
+        },
+        {
+          "id": "7",
+          "uid": "s:20~l:28~t:7",
+          "type": "team",
+          "order": 1,
+          "homeAway": "away",
+          "winner": true,
+          "team": {
+            "id": "7",
+            "uid": "s:20~l:28~t:7",
+            "location": "Denver",
+            "name": "Broncos",
+            "abbreviation": "DEN",
+            "displayName": "Denver Broncos",
+            "shortDisplayName": "Broncos",
+            "color": "0a2343",
+            "alternateColor": "fc4c02",
+            "isActive": true,
+            "venue": {
+              "id": "3937"
+            },
+            "links": [
+              {
+                "rel": [
+                  "clubhouse",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/_/name/den/denver-broncos",
+                "text": "Clubhouse",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "roster",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/roster/_/name/den/denver-broncos",
+                "text": "Roster",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "roster",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:7&section=roster",
+                "text": "Roster",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "stats",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/stats/_/name/den/denver-broncos",
+                "text": "Statistics",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "stats",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:7&section=stats",
+                "text": "Statistics",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "schedule",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/schedule/_/name/den",
+                "text": "Schedule",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "schedule",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:7&section=scores",
+                "text": "Schedule",
+                "isExternal": false,
+                "isPremium": false
+              }
+            ],
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/den.png"
+          },
+          "score": "27",
+          "linescores": [
+            {
+              "value": 3.0,
+              "displayValue": "3",
+              "period": 1
+            },
+            {
+              "value": 10.0,
+              "displayValue": "10",
+              "period": 2
+            },
+            {
+              "value": 7.0,
+              "displayValue": "7",
+              "period": 3
+            },
+            {
+              "value": 0.0,
+              "displayValue": "0",
+              "period": 4
+            },
+            {
+              "value": 7.0,
+              "displayValue": "7",
+              "period": 5
+            }
+          ],
+          "statistics": [],
+          "curatedRank": {
+            "current": 99
+          },
+          "records": [
+            {
+              "name": "overall",
+              "abbreviation": "Game",
+              "type": "total",
+              "summary": "10-2"
+            },
+            {
+              "name": "Home",
+              "type": "home",
+              "summary": "6-0"
+            },
+            {
+              "name": "Road",
+              "type": "road",
+              "summary": "4-2"
+            }
+          ]
+        }
+      ],
+      "notes": [],
+      "status": {
+        "clock": 0.0,
+        "displayClock": "0:00",
+        "period": 5,
+        "type": {
+          "id": "3",
+          "name": "STATUS_FINAL",
+          "state": "post",
+          "completed": true,
+          "description": "Final",
+          "detail": "Final/OT",
+          "shortDetail": "Final/OT",
+          "altDetail": "OT"
+        },
+        "isTBDFlex": false
+      },
+      "broadcasts": [
+        {
+          "market": "national",
+          "names": [
+            "NBC",
+            "Peacock"
+          ]
+        }
+      ],
+      "leaders": [
+        {
+          "name": "passingYards",
+          "displayName": "Passing Leader",
+          "shortDisplayName": "PASS",
+          "abbreviation": "PYDS",
+          "leaders": [
+            {
+              "displayValue": "29/45, 321 YDS, 1 TD, 1 INT",
+              "value": 321.0,
+              "athlete": {
+                "id": "4426338",
+                "fullName": "Bo Nix",
+                "displayName": "Bo Nix",
+                "shortName": "B. Nix",
+                "links": [
+                  {
+                    "rel": [
+                      "playercard",
+                      "desktop",
+                      "athlete"
+                    ],
+                    "href": "https://www.espn.com/nfl/player/_/id/4426338/bo-nix"
+                  }
+                ],
+                "headshot": "https://a.espncdn.com/i/headshots/nfl/players/full/4426338.png",
+                "jersey": "10",
+                "position": {
+                  "abbreviation": "QB"
+                },
+                "team": {
+                  "id": "7"
+                },
+                "active": true
+              },
+              "team": {
+                "id": "7"
+              }
+            }
+          ]
+        },
+        {
+          "name": "rushingYards",
+          "displayName": "Rushing Leader",
+          "shortDisplayName": "RUSH",
+          "abbreviation": "RYDS",
+          "leaders": [
+            {
+              "displayValue": "10 CAR, 55 YDS",
+              "value": 55.0,
+              "athlete": {
+                "id": "2576980",
+                "fullName": "Marcus Mariota",
+                "displayName": "Marcus Mariota",
+                "shortName": "M. Mariota",
+                "links": [
+                  {
+                    "rel": [
+                      "playercard",
+                      "desktop",
+                      "athlete"
+                    ],
+                    "href": "https://www.espn.com/nfl/player/_/id/2576980/marcus-mariota"
+                  }
+                ],
+                "headshot": "https://a.espncdn.com/i/headshots/nfl/players/full/2576980.png",
+                "jersey": "8",
+                "position": {
+                  "abbreviation": "QB"
+                },
+                "team": {
+                  "id": "28"
+                },
+                "active": true
+              },
+              "team": {
+                "id": "28"
+              }
+            }
+          ]
+        },
+        {
+          "name": "receivingYards",
+          "displayName": "Receiving Leader",
+          "shortDisplayName": "REC",
+          "abbreviation": "RECYDS",
+          "leaders": [
+            {
+              "displayValue": "10 REC, 106 YDS",
+              "value": 106.0,
+              "athlete": {
+                "id": "15835",
+                "fullName": "Zach Ertz",
+                "displayName": "Zach Ertz",
+                "shortName": "Z. Ertz",
+                "links": [
+                  {
+                    "rel": [
+                      "playercard",
+                      "desktop",
+                      "athlete"
+                    ],
+                    "href": "https://www.espn.com/nfl/player/_/id/15835/zach-ertz"
+                  }
+                ],
+                "headshot": "https://a.espncdn.com/i/headshots/nfl/players/full/15835.png",
+                "position": {
+                  "abbreviation": "-"
+                },
+                "active": true
+              },
+              "team": {
+                "id": "28"
+              }
+            }
+          ]
+        }
+      ],
+      "format": {
+        "regulation": {
+          "periods": 4
+        }
+      },
+      "startDate": "2025-12-01T01:20Z",
+      "broadcast": "NBC/Peacock",
+      "geoBroadcasts": [
+        {
+          "type": {
+            "id": "1",
+            "shortName": "TV"
+          },
+          "market": {
+            "id": "1",
+            "type": "National"
+          },
+          "media": {
+            "shortName": "NBC"
+          },
+          "lang": "en",
+          "region": "us"
+        },
+        {
+          "type": {
+            "id": "4",
+            "shortName": "Streaming"
+          },
+          "market": {
+            "id": "1",
+            "type": "National"
+          },
+          "media": {
+            "shortName": "Peacock"
+          },
+          "lang": "en",
+          "region": "us"
+        }
+      ],
+      "highlights": [],
+      "headlines": [
+        {
+          "type": "Recap",
+          "description": "\u2014 Nik Bonitto batted away Marcus Mariota\u2019s pass in overtime to deny Washington a winning 2-point conversion, and the Denver Broncos held on for their ninth straight victory, a 27-26 thriller...",
+          "shortLinkText": "Nik Bonitto bats away 2-point try in OT and Broncos escape with 27-26 win over Commanders"
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "language": "en-US",
+      "rel": [
+        "summary",
+        "desktop",
+        "event"
+      ],
+      "href": "https://www.espn.com/nfl/game/_/gameId/401772931/broncos-commanders",
+      "text": "Gamecast",
+      "shortText": "Gamecast",
+      "isExternal": false,
+      "isPremium": false
+    },
+    {
+      "language": "en-US",
+      "rel": [
+        "boxscore",
+        "desktop",
+        "event"
+      ],
+      "href": "https://www.espn.com/nfl/boxscore/_/gameId/401772931",
+      "text": "Box Score",
+      "shortText": "Box Score",
+      "isExternal": false,
+      "isPremium": false
+    },
+    {
+      "language": "en-US",
+      "rel": [
+        "pbp",
+        "desktop",
+        "event"
+      ],
+      "href": "https://www.espn.com/nfl/playbyplay/_/gameId/401772931",
+      "text": "Play-by-Play",
+      "shortText": "Play-by-Play",
+      "isExternal": false,
+      "isPremium": false
+    },
+    {
+      "language": "en-US",
+      "rel": [
+        "recap",
+        "desktop",
+        "event"
+      ],
+      "href": "https://www.espn.com/nfl/recap?gameId=401772931",
+      "text": "Recap",
+      "shortText": "Recap",
+      "isExternal": false,
+      "isPremium": false
+    }
+  ],
+  "status": {
+    "clock": 0.0,
+    "displayClock": "0:00",
+    "period": 5,
+    "type": {
+      "id": "3",
+      "name": "STATUS_FINAL",
+      "state": "post",
+      "completed": true,
+      "description": "Final",
+      "detail": "Final/OT",
+      "shortDetail": "Final/OT",
+      "altDetail": "OT"
+    }
+  }
+}

@@ -1,0 +1,586 @@
+{
+  "id": "401437754",
+  "uid": "s:20~l:28~e:401437754",
+  "date": "2022-10-02T17:00Z",
+  "name": "Tennessee Titans at Indianapolis Colts",
+  "shortName": "TEN @ IND",
+  "season": {
+    "year": 2022,
+    "type": 2,
+    "slug": "regular-season"
+  },
+  "week": {
+    "number": 4
+  },
+  "competitions": [
+    {
+      "id": "401437754",
+      "uid": "s:20~l:28~e:401437754~c:401437754",
+      "date": "2022-10-02T17:00Z",
+      "attendance": 65781,
+      "type": {
+        "id": "1",
+        "abbreviation": "STD"
+      },
+      "timeValid": true,
+      "neutralSite": false,
+      "conferenceCompetition": false,
+      "playByPlayAvailable": true,
+      "recent": false,
+      "venue": {
+        "id": "3812",
+        "fullName": "Lucas Oil Stadium",
+        "address": {
+          "city": "Indianapolis",
+          "state": "IN",
+          "country": "USA"
+        },
+        "indoor": true
+      },
+      "competitors": [
+        {
+          "id": "11",
+          "uid": "s:20~l:28~t:11",
+          "type": "team",
+          "order": 0,
+          "homeAway": "home",
+          "winner": false,
+          "team": {
+            "id": "11",
+            "uid": "s:20~l:28~t:11",
+            "location": "Indianapolis",
+            "name": "Colts",
+            "abbreviation": "IND",
+            "displayName": "Indianapolis Colts",
+            "shortDisplayName": "Colts",
+            "color": "00417E",
+            "alternateColor": "ffffff",
+            "isActive": true,
+            "venue": {
+              "id": "3812"
+            },
+            "links": [
+              {
+                "rel": [
+                  "clubhouse",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/_/name/ind/indianapolis-colts",
+                "text": "Clubhouse",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "roster",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/roster/_/name/ind/indianapolis-colts",
+                "text": "Roster",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "roster",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:11&section=roster",
+                "text": "Roster",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "stats",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/stats/_/name/ind/indianapolis-colts",
+                "text": "Statistics",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "stats",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:11&section=stats",
+                "text": "Statistics",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "schedule",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/schedule/_/name/ind",
+                "text": "Schedule",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "schedule",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:11&section=scores",
+                "text": "Schedule",
+                "isExternal": false,
+                "isPremium": false
+              }
+            ],
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ind.png"
+          },
+          "score": "17",
+          "linescores": [
+            {
+              "value": 0.0,
+              "displayValue": "0",
+              "period": 1
+            },
+            {
+              "value": 10.0,
+              "displayValue": "10",
+              "period": 2
+            },
+            {
+              "value": 7.0,
+              "displayValue": "7",
+              "period": 3
+            },
+            {
+              "value": 0.0,
+              "displayValue": "0",
+              "period": 4
+            }
+          ],
+          "statistics": [],
+          "records": [
+            {
+              "name": "overall",
+              "abbreviation": "Game",
+              "type": "total",
+              "summary": "1-2-1"
+            },
+            {
+              "name": "Home",
+              "type": "home",
+              "summary": "1-1"
+            },
+            {
+              "name": "Road",
+              "type": "road",
+              "summary": "0-1-1"
+            }
+          ]
+        },
+        {
+          "id": "10",
+          "uid": "s:20~l:28~t:10",
+          "type": "team",
+          "order": 1,
+          "homeAway": "away",
+          "winner": true,
+          "team": {
+            "id": "10",
+            "uid": "s:20~l:28~t:10",
+            "location": "Tennessee",
+            "name": "Titans",
+            "abbreviation": "TEN",
+            "displayName": "Tennessee Titans",
+            "shortDisplayName": "Titans",
+            "color": "2F95DD",
+            "alternateColor": "001532",
+            "isActive": true,
+            "venue": {
+              "id": "3810"
+            },
+            "links": [
+              {
+                "rel": [
+                  "clubhouse",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/_/name/ten/tennessee-titans",
+                "text": "Clubhouse",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "roster",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/roster/_/name/ten/tennessee-titans",
+                "text": "Roster",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "roster",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:10&section=roster",
+                "text": "Roster",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "stats",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/stats/_/name/ten/tennessee-titans",
+                "text": "Statistics",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "stats",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:10&section=stats",
+                "text": "Statistics",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "schedule",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/schedule/_/name/ten",
+                "text": "Schedule",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "schedule",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:10&section=scores",
+                "text": "Schedule",
+                "isExternal": false,
+                "isPremium": false
+              }
+            ],
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ten.png"
+          },
+          "score": "24",
+          "linescores": [
+            {
+              "value": 14.0,
+              "displayValue": "14",
+              "period": 1
+            },
+            {
+              "value": 10.0,
+              "displayValue": "10",
+              "period": 2
+            },
+            {
+              "value": 0.0,
+              "displayValue": "0",
+              "period": 3
+            },
+            {
+              "value": 0.0,
+              "displayValue": "0",
+              "period": 4
+            }
+          ],
+          "statistics": [],
+          "records": [
+            {
+              "name": "overall",
+              "abbreviation": "Game",
+              "type": "total",
+              "summary": "2-2"
+            },
+            {
+              "name": "Home",
+              "type": "home",
+              "summary": "1-1"
+            },
+            {
+              "name": "Road",
+              "type": "road",
+              "summary": "1-1"
+            }
+          ]
+        }
+      ],
+      "notes": [],
+      "status": {
+        "clock": 0.0,
+        "displayClock": "0:00",
+        "period": 4,
+        "type": {
+          "id": "3",
+          "name": "STATUS_FINAL",
+          "state": "post",
+          "completed": true,
+          "description": "Final",
+          "detail": "Final",
+          "shortDetail": "Final"
+        },
+        "isTBDFlex": false
+      },
+      "broadcasts": [
+        {
+          "market": "national",
+          "names": [
+            "FOX"
+          ]
+        }
+      ],
+      "leaders": [
+        {
+          "name": "passingYards",
+          "displayName": "Passing Leader",
+          "shortDisplayName": "PASS",
+          "abbreviation": "PYDS",
+          "leaders": [
+            {
+              "displayValue": "27/37, 356 YDS, 2 TD, 1 INT",
+              "value": 356.0,
+              "athlete": {
+                "id": "11237",
+                "fullName": "Matt Ryan",
+                "displayName": "Matt Ryan",
+                "shortName": "M. Ryan",
+                "links": [
+                  {
+                    "rel": [
+                      "playercard",
+                      "desktop",
+                      "athlete"
+                    ],
+                    "href": "https://www.espn.com/nfl/player/_/id/11237/matt-ryan"
+                  }
+                ],
+                "headshot": "https://a.espncdn.com/i/headshots/nfl/players/full/11237.png",
+                "jersey": "2",
+                "position": {
+                  "abbreviation": "QB"
+                },
+                "team": {
+                  "id": "11"
+                },
+                "active": false
+              },
+              "team": {
+                "id": "11"
+              }
+            }
+          ]
+        },
+        {
+          "name": "rushingYards",
+          "displayName": "Rushing Leader",
+          "shortDisplayName": "RUSH",
+          "abbreviation": "RYDS",
+          "leaders": [
+            {
+              "displayValue": "22 CAR, 114 YDS, 1 TD",
+              "value": 114.0,
+              "athlete": {
+                "id": "3043078",
+                "fullName": "Derrick Henry",
+                "displayName": "Derrick Henry",
+                "shortName": "D. Henry",
+                "links": [
+                  {
+                    "rel": [
+                      "playercard",
+                      "desktop",
+                      "athlete"
+                    ],
+                    "href": "https://www.espn.com/nfl/player/_/id/3043078/derrick-henry"
+                  }
+                ],
+                "headshot": "https://a.espncdn.com/i/headshots/nfl/players/full/3043078.png",
+                "jersey": "22",
+                "position": {
+                  "abbreviation": "RB"
+                },
+                "team": {
+                  "id": "10"
+                },
+                "active": true
+              },
+              "team": {
+                "id": "10"
+              }
+            }
+          ]
+        },
+        {
+          "name": "receivingYards",
+          "displayName": "Receiving Leader",
+          "shortDisplayName": "REC",
+          "abbreviation": "RECYDS",
+          "leaders": [
+            {
+              "displayValue": "6 REC, 85 YDS, 2 TD",
+              "value": 85.0,
+              "athlete": {
+                "id": "2998565",
+                "fullName": "Mo Alie-Cox",
+                "displayName": "Mo Alie-Cox",
+                "shortName": "M. Alie-Cox",
+                "links": [
+                  {
+                    "rel": [
+                      "playercard",
+                      "desktop",
+                      "athlete"
+                    ],
+                    "href": "https://www.espn.com/nfl/player/_/id/2998565/mo-alie-cox"
+                  }
+                ],
+                "headshot": "https://a.espncdn.com/i/headshots/nfl/players/full/2998565.png",
+                "jersey": "81",
+                "position": {
+                  "abbreviation": "TE"
+                },
+                "team": {
+                  "id": "11"
+                },
+                "active": true
+              },
+              "team": {
+                "id": "11"
+              }
+            }
+          ]
+        }
+      ],
+      "format": {
+        "regulation": {
+          "periods": 4
+        }
+      },
+      "startDate": "2022-10-02T17:00Z",
+      "broadcast": "FOX",
+      "geoBroadcasts": [
+        {
+          "type": {
+            "id": "1",
+            "shortName": "TV"
+          },
+          "market": {
+            "id": "1",
+            "type": "National"
+          },
+          "media": {
+            "shortName": "FOX"
+          },
+          "lang": "en",
+          "region": "us"
+        }
+      ],
+      "headlines": [
+        {
+          "type": "Recap",
+          "description": "\u2014 Derrick Henry got right back to business against the Indianapolis Colts.",
+          "shortLinkText": "Henry reigns as Titans hold off Colts for 24-17 victory"
+        }
+      ],
+      "highlights": []
+    }
+  ],
+  "links": [
+    {
+      "language": "en-US",
+      "rel": [
+        "summary",
+        "desktop",
+        "event"
+      ],
+      "href": "https://www.espn.com/nfl/game/_/gameId/401437754/titans-colts",
+      "text": "Gamecast",
+      "shortText": "Gamecast",
+      "isExternal": false,
+      "isPremium": false
+    },
+    {
+      "language": "en-US",
+      "rel": [
+        "boxscore",
+        "desktop",
+        "event"
+      ],
+      "href": "https://www.espn.com/nfl/boxscore/_/gameId/401437754",
+      "text": "Box Score",
+      "shortText": "Box Score",
+      "isExternal": false,
+      "isPremium": false
+    },
+    {
+      "language": "en-US",
+      "rel": [
+        "pbp",
+        "desktop",
+        "event"
+      ],
+      "href": "https://www.espn.com/nfl/playbyplay/_/gameId/401437754",
+      "text": "Play-by-Play",
+      "shortText": "Play-by-Play",
+      "isExternal": false,
+      "isPremium": false
+    },
+    {
+      "language": "en-US",
+      "rel": [
+        "recap",
+        "desktop",
+        "event"
+      ],
+      "href": "https://www.espn.com/nfl/recap?gameId=401437754",
+      "text": "Recap",
+      "shortText": "Recap",
+      "isExternal": false,
+      "isPremium": false
+    }
+  ],
+  "status": {
+    "clock": 0.0,
+    "displayClock": "0:00",
+    "period": 4,
+    "type": {
+      "id": "3",
+      "name": "STATUS_FINAL",
+      "state": "post",
+      "completed": true,
+      "description": "Final",
+      "detail": "Final",
+      "shortDetail": "Final"
+    }
+  }
+}

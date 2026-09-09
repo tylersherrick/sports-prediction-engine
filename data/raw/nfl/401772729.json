@@ -1,0 +1,592 @@
+{
+  "id": "401772729",
+  "uid": "s:20~l:28~e:401772729",
+  "date": "2025-09-14T20:05Z",
+  "name": "Denver Broncos at Indianapolis Colts",
+  "shortName": "DEN @ IND",
+  "season": {
+    "year": 2025,
+    "type": 2,
+    "slug": "regular-season"
+  },
+  "week": {
+    "number": 2
+  },
+  "competitions": [
+    {
+      "id": "401772729",
+      "uid": "s:20~l:28~e:401772729~c:401772729",
+      "date": "2025-09-14T20:05Z",
+      "attendance": 63910,
+      "type": {
+        "id": "1",
+        "abbreviation": "STD"
+      },
+      "timeValid": true,
+      "neutralSite": false,
+      "conferenceCompetition": false,
+      "playByPlayAvailable": true,
+      "recent": false,
+      "venue": {
+        "id": "3812",
+        "fullName": "Lucas Oil Stadium",
+        "address": {
+          "city": "Indianapolis",
+          "state": "IN",
+          "country": "USA"
+        },
+        "indoor": true
+      },
+      "competitors": [
+        {
+          "id": "11",
+          "uid": "s:20~l:28~t:11",
+          "type": "team",
+          "order": 0,
+          "homeAway": "home",
+          "winner": true,
+          "team": {
+            "id": "11",
+            "uid": "s:20~l:28~t:11",
+            "location": "Indianapolis",
+            "name": "Colts",
+            "abbreviation": "IND",
+            "displayName": "Indianapolis Colts",
+            "shortDisplayName": "Colts",
+            "color": "003b75",
+            "alternateColor": "ffffff",
+            "isActive": true,
+            "venue": {
+              "id": "3812"
+            },
+            "links": [
+              {
+                "rel": [
+                  "clubhouse",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/_/name/ind/indianapolis-colts",
+                "text": "Clubhouse",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "roster",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/roster/_/name/ind/indianapolis-colts",
+                "text": "Roster",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "roster",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:11&section=roster",
+                "text": "Roster",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "stats",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/stats/_/name/ind/indianapolis-colts",
+                "text": "Statistics",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "stats",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:11&section=stats",
+                "text": "Statistics",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "schedule",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/schedule/_/name/ind",
+                "text": "Schedule",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "schedule",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:11&section=scores",
+                "text": "Schedule",
+                "isExternal": false,
+                "isPremium": false
+              }
+            ],
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ind.png"
+          },
+          "score": "29",
+          "linescores": [
+            {
+              "value": 6.0,
+              "displayValue": "6",
+              "period": 1
+            },
+            {
+              "value": 14.0,
+              "displayValue": "14",
+              "period": 2
+            },
+            {
+              "value": 3.0,
+              "displayValue": "3",
+              "period": 3
+            },
+            {
+              "value": 6.0,
+              "displayValue": "6",
+              "period": 4
+            }
+          ],
+          "statistics": [],
+          "curatedRank": {
+            "current": 99
+          },
+          "records": [
+            {
+              "name": "overall",
+              "abbreviation": "Game",
+              "type": "total",
+              "summary": "2-0"
+            },
+            {
+              "name": "Home",
+              "type": "home",
+              "summary": "2-0"
+            },
+            {
+              "name": "Road",
+              "type": "road",
+              "summary": "0-0"
+            }
+          ]
+        },
+        {
+          "id": "7",
+          "uid": "s:20~l:28~t:7",
+          "type": "team",
+          "order": 1,
+          "homeAway": "away",
+          "winner": false,
+          "team": {
+            "id": "7",
+            "uid": "s:20~l:28~t:7",
+            "location": "Denver",
+            "name": "Broncos",
+            "abbreviation": "DEN",
+            "displayName": "Denver Broncos",
+            "shortDisplayName": "Broncos",
+            "color": "0a2343",
+            "alternateColor": "fc4c02",
+            "isActive": true,
+            "venue": {
+              "id": "3937"
+            },
+            "links": [
+              {
+                "rel": [
+                  "clubhouse",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/_/name/den/denver-broncos",
+                "text": "Clubhouse",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "roster",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/roster/_/name/den/denver-broncos",
+                "text": "Roster",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "roster",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:7&section=roster",
+                "text": "Roster",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "stats",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/stats/_/name/den/denver-broncos",
+                "text": "Statistics",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "stats",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:7&section=stats",
+                "text": "Statistics",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "schedule",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/schedule/_/name/den",
+                "text": "Schedule",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "schedule",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:7&section=scores",
+                "text": "Schedule",
+                "isExternal": false,
+                "isPremium": false
+              }
+            ],
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/den.png"
+          },
+          "score": "28",
+          "linescores": [
+            {
+              "value": 7.0,
+              "displayValue": "7",
+              "period": 1
+            },
+            {
+              "value": 14.0,
+              "displayValue": "14",
+              "period": 2
+            },
+            {
+              "value": 7.0,
+              "displayValue": "7",
+              "period": 3
+            },
+            {
+              "value": 0.0,
+              "displayValue": "0",
+              "period": 4
+            }
+          ],
+          "statistics": [],
+          "curatedRank": {
+            "current": 99
+          },
+          "records": [
+            {
+              "name": "overall",
+              "abbreviation": "Game",
+              "type": "total",
+              "summary": "1-1"
+            },
+            {
+              "name": "Home",
+              "type": "home",
+              "summary": "1-0"
+            },
+            {
+              "name": "Road",
+              "type": "road",
+              "summary": "0-1"
+            }
+          ]
+        }
+      ],
+      "notes": [],
+      "status": {
+        "clock": 0.0,
+        "displayClock": "0:00",
+        "period": 4,
+        "type": {
+          "id": "3",
+          "name": "STATUS_FINAL",
+          "state": "post",
+          "completed": true,
+          "description": "Final",
+          "detail": "Final",
+          "shortDetail": "Final"
+        },
+        "isTBDFlex": false
+      },
+      "broadcasts": [
+        {
+          "market": "national",
+          "names": [
+            "CBS"
+          ]
+        }
+      ],
+      "leaders": [
+        {
+          "name": "passingYards",
+          "displayName": "Passing Leader",
+          "shortDisplayName": "PASS",
+          "abbreviation": "PYDS",
+          "leaders": [
+            {
+              "displayValue": "23/34, 316 YDS, 1 TD",
+              "value": 316.0,
+              "athlete": {
+                "id": "3917792",
+                "fullName": "Daniel Jones",
+                "displayName": "Daniel Jones",
+                "shortName": "D. Jones",
+                "links": [
+                  {
+                    "rel": [
+                      "playercard",
+                      "desktop",
+                      "athlete"
+                    ],
+                    "href": "https://www.espn.com/nfl/player/_/id/3917792/daniel-jones"
+                  }
+                ],
+                "headshot": "https://a.espncdn.com/i/headshots/nfl/players/full/3917792.png",
+                "jersey": "17",
+                "position": {
+                  "abbreviation": "QB"
+                },
+                "team": {
+                  "id": "11"
+                },
+                "active": true
+              },
+              "team": {
+                "id": "11"
+              }
+            }
+          ]
+        },
+        {
+          "name": "rushingYards",
+          "displayName": "Rushing Leader",
+          "shortDisplayName": "RUSH",
+          "abbreviation": "RYDS",
+          "leaders": [
+            {
+              "displayValue": "25 CAR, 165 YDS",
+              "value": 165.0,
+              "athlete": {
+                "id": "4242335",
+                "fullName": "Jonathan Taylor",
+                "displayName": "Jonathan Taylor",
+                "shortName": "J. Taylor",
+                "links": [
+                  {
+                    "rel": [
+                      "playercard",
+                      "desktop",
+                      "athlete"
+                    ],
+                    "href": "https://www.espn.com/nfl/player/_/id/4242335/jonathan-taylor"
+                  }
+                ],
+                "headshot": "https://a.espncdn.com/i/headshots/nfl/players/full/4242335.png",
+                "jersey": "28",
+                "position": {
+                  "abbreviation": "RB"
+                },
+                "team": {
+                  "id": "11"
+                },
+                "active": true
+              },
+              "team": {
+                "id": "11"
+              }
+            }
+          ]
+        },
+        {
+          "name": "receivingYards",
+          "displayName": "Receiving Leader",
+          "shortDisplayName": "REC",
+          "abbreviation": "RECYDS",
+          "leaders": [
+            {
+              "displayValue": "8 REC, 89 YDS, 1 TD",
+              "value": 89.0,
+              "athlete": {
+                "id": "4431280",
+                "fullName": "Troy Franklin",
+                "displayName": "Troy Franklin",
+                "shortName": "T. Franklin",
+                "links": [
+                  {
+                    "rel": [
+                      "playercard",
+                      "desktop",
+                      "athlete"
+                    ],
+                    "href": "https://www.espn.com/nfl/player/_/id/4431280/troy-franklin"
+                  }
+                ],
+                "headshot": "https://a.espncdn.com/i/headshots/nfl/players/full/4431280.png",
+                "jersey": "11",
+                "position": {
+                  "abbreviation": "WR"
+                },
+                "team": {
+                  "id": "7"
+                },
+                "active": true
+              },
+              "team": {
+                "id": "7"
+              }
+            }
+          ]
+        }
+      ],
+      "format": {
+        "regulation": {
+          "periods": 4
+        }
+      },
+      "startDate": "2025-09-14T20:05Z",
+      "broadcast": "CBS",
+      "geoBroadcasts": [
+        {
+          "type": {
+            "id": "1",
+            "shortName": "TV"
+          },
+          "market": {
+            "id": "1",
+            "type": "National"
+          },
+          "media": {
+            "shortName": "CBS"
+          },
+          "lang": "en",
+          "region": "us"
+        }
+      ],
+      "highlights": [],
+      "headlines": [
+        {
+          "type": "Recap",
+          "description": "\u2014 Indianapolis Colts kicker Spencer Shrader missed one opportunity to beat the Denver Broncos.",
+          "shortLinkText": "Spencer Shrader converts from 45 yards after penalty on 60-yard miss and Colts beat Broncos 29-28"
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "language": "en-US",
+      "rel": [
+        "summary",
+        "desktop",
+        "event"
+      ],
+      "href": "https://www.espn.com/nfl/game/_/gameId/401772729/broncos-colts",
+      "text": "Gamecast",
+      "shortText": "Gamecast",
+      "isExternal": false,
+      "isPremium": false
+    },
+    {
+      "language": "en-US",
+      "rel": [
+        "boxscore",
+        "desktop",
+        "event"
+      ],
+      "href": "https://www.espn.com/nfl/boxscore/_/gameId/401772729",
+      "text": "Box Score",
+      "shortText": "Box Score",
+      "isExternal": false,
+      "isPremium": false
+    },
+    {
+      "language": "en-US",
+      "rel": [
+        "pbp",
+        "desktop",
+        "event"
+      ],
+      "href": "https://www.espn.com/nfl/playbyplay/_/gameId/401772729",
+      "text": "Play-by-Play",
+      "shortText": "Play-by-Play",
+      "isExternal": false,
+      "isPremium": false
+    },
+    {
+      "language": "en-US",
+      "rel": [
+        "recap",
+        "desktop",
+        "event"
+      ],
+      "href": "https://www.espn.com/nfl/recap?gameId=401772729",
+      "text": "Recap",
+      "shortText": "Recap",
+      "isExternal": false,
+      "isPremium": false
+    }
+  ],
+  "status": {
+    "clock": 0.0,
+    "displayClock": "0:00",
+    "period": 4,
+    "type": {
+      "id": "3",
+      "name": "STATUS_FINAL",
+      "state": "post",
+      "completed": true,
+      "description": "Final",
+      "detail": "Final",
+      "shortDetail": "Final"
+    }
+  }
+}

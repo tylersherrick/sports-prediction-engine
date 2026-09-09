@@ -1,0 +1,586 @@
+{
+  "id": "401437840",
+  "uid": "s:20~l:28~e:401437840",
+  "date": "2022-11-13T21:05Z",
+  "name": "Indianapolis Colts at Las Vegas Raiders",
+  "shortName": "IND @ LV",
+  "season": {
+    "year": 2022,
+    "type": 2,
+    "slug": "regular-season"
+  },
+  "week": {
+    "number": 10
+  },
+  "competitions": [
+    {
+      "id": "401437840",
+      "uid": "s:20~l:28~e:401437840~c:401437840",
+      "date": "2022-11-13T21:05Z",
+      "attendance": 62197,
+      "type": {
+        "id": "1",
+        "abbreviation": "STD"
+      },
+      "timeValid": true,
+      "neutralSite": false,
+      "conferenceCompetition": false,
+      "playByPlayAvailable": true,
+      "recent": false,
+      "venue": {
+        "id": "6501",
+        "fullName": "Allegiant Stadium",
+        "address": {
+          "city": "Las Vegas",
+          "state": "NV",
+          "country": "USA"
+        },
+        "indoor": true
+      },
+      "competitors": [
+        {
+          "id": "13",
+          "uid": "s:20~l:28~t:13",
+          "type": "team",
+          "order": 0,
+          "homeAway": "home",
+          "winner": false,
+          "team": {
+            "id": "13",
+            "uid": "s:20~l:28~t:13",
+            "location": "Las Vegas",
+            "name": "Raiders",
+            "abbreviation": "LV",
+            "displayName": "Las Vegas Raiders",
+            "shortDisplayName": "Raiders",
+            "color": "000000",
+            "alternateColor": "a5acaf",
+            "isActive": true,
+            "venue": {
+              "id": "6501"
+            },
+            "links": [
+              {
+                "rel": [
+                  "clubhouse",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/_/name/lv/las-vegas-raiders",
+                "text": "Clubhouse",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "roster",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/roster/_/name/lv/las-vegas-raiders",
+                "text": "Roster",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "roster",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:13&section=roster",
+                "text": "Roster",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "stats",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/stats/_/name/lv/las-vegas-raiders",
+                "text": "Statistics",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "stats",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:13&section=stats",
+                "text": "Statistics",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "schedule",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/schedule/_/name/lv",
+                "text": "Schedule",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "schedule",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:13&section=scores",
+                "text": "Schedule",
+                "isExternal": false,
+                "isPremium": false
+              }
+            ],
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lv.png"
+          },
+          "score": "20",
+          "linescores": [
+            {
+              "value": 0.0,
+              "displayValue": "0",
+              "period": 1
+            },
+            {
+              "value": 7.0,
+              "displayValue": "7",
+              "period": 2
+            },
+            {
+              "value": 7.0,
+              "displayValue": "7",
+              "period": 3
+            },
+            {
+              "value": 6.0,
+              "displayValue": "6",
+              "period": 4
+            }
+          ],
+          "statistics": [],
+          "records": [
+            {
+              "name": "overall",
+              "abbreviation": "Game",
+              "type": "total",
+              "summary": "2-7"
+            },
+            {
+              "name": "Home",
+              "type": "home",
+              "summary": "2-2"
+            },
+            {
+              "name": "Road",
+              "type": "road",
+              "summary": "0-5"
+            }
+          ]
+        },
+        {
+          "id": "11",
+          "uid": "s:20~l:28~t:11",
+          "type": "team",
+          "order": 1,
+          "homeAway": "away",
+          "winner": true,
+          "team": {
+            "id": "11",
+            "uid": "s:20~l:28~t:11",
+            "location": "Indianapolis",
+            "name": "Colts",
+            "abbreviation": "IND",
+            "displayName": "Indianapolis Colts",
+            "shortDisplayName": "Colts",
+            "color": "00417E",
+            "alternateColor": "ffffff",
+            "isActive": true,
+            "venue": {
+              "id": "3812"
+            },
+            "links": [
+              {
+                "rel": [
+                  "clubhouse",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/_/name/ind/indianapolis-colts",
+                "text": "Clubhouse",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "roster",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/roster/_/name/ind/indianapolis-colts",
+                "text": "Roster",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "roster",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:11&section=roster",
+                "text": "Roster",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "stats",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/stats/_/name/ind/indianapolis-colts",
+                "text": "Statistics",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "stats",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:11&section=stats",
+                "text": "Statistics",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "schedule",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/schedule/_/name/ind",
+                "text": "Schedule",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "schedule",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:11&section=scores",
+                "text": "Schedule",
+                "isExternal": false,
+                "isPremium": false
+              }
+            ],
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ind.png"
+          },
+          "score": "25",
+          "linescores": [
+            {
+              "value": 7.0,
+              "displayValue": "7",
+              "period": 1
+            },
+            {
+              "value": 6.0,
+              "displayValue": "6",
+              "period": 2
+            },
+            {
+              "value": 6.0,
+              "displayValue": "6",
+              "period": 3
+            },
+            {
+              "value": 6.0,
+              "displayValue": "6",
+              "period": 4
+            }
+          ],
+          "statistics": [],
+          "records": [
+            {
+              "name": "overall",
+              "abbreviation": "Game",
+              "type": "total",
+              "summary": "4-5-1"
+            },
+            {
+              "name": "Home",
+              "type": "home",
+              "summary": "2-2"
+            },
+            {
+              "name": "Road",
+              "type": "road",
+              "summary": "2-3-1"
+            }
+          ]
+        }
+      ],
+      "notes": [],
+      "status": {
+        "clock": 0.0,
+        "displayClock": "0:00",
+        "period": 4,
+        "type": {
+          "id": "3",
+          "name": "STATUS_FINAL",
+          "state": "post",
+          "completed": true,
+          "description": "Final",
+          "detail": "Final",
+          "shortDetail": "Final"
+        },
+        "isTBDFlex": false
+      },
+      "broadcasts": [
+        {
+          "market": "national",
+          "names": [
+            "CBS"
+          ]
+        }
+      ],
+      "leaders": [
+        {
+          "name": "passingYards",
+          "displayName": "Passing Leader",
+          "shortDisplayName": "PASS",
+          "abbreviation": "PYDS",
+          "leaders": [
+            {
+              "displayValue": "24/38, 248 YDS, 2 TD",
+              "value": 248.0,
+              "athlete": {
+                "id": "16757",
+                "fullName": "Derek Carr",
+                "displayName": "Derek Carr",
+                "shortName": "D. Carr",
+                "links": [
+                  {
+                    "rel": [
+                      "playercard",
+                      "desktop",
+                      "athlete"
+                    ],
+                    "href": "https://www.espn.com/nfl/player/_/id/16757/derek-carr"
+                  }
+                ],
+                "headshot": "https://a.espncdn.com/i/headshots/nfl/players/full/16757.png",
+                "jersey": "4",
+                "position": {
+                  "abbreviation": "QB"
+                },
+                "team": {
+                  "id": "13"
+                },
+                "active": false
+              },
+              "team": {
+                "id": "13"
+              }
+            }
+          ]
+        },
+        {
+          "name": "rushingYards",
+          "displayName": "Rushing Leader",
+          "shortDisplayName": "RUSH",
+          "abbreviation": "RYDS",
+          "leaders": [
+            {
+              "displayValue": "22 CAR, 147 YDS, 1 TD",
+              "value": 147.0,
+              "athlete": {
+                "id": "4242335",
+                "fullName": "Jonathan Taylor",
+                "displayName": "Jonathan Taylor",
+                "shortName": "J. Taylor",
+                "links": [
+                  {
+                    "rel": [
+                      "playercard",
+                      "desktop",
+                      "athlete"
+                    ],
+                    "href": "https://www.espn.com/nfl/player/_/id/4242335/jonathan-taylor"
+                  }
+                ],
+                "headshot": "https://a.espncdn.com/i/headshots/nfl/players/full/4242335.png",
+                "jersey": "28",
+                "position": {
+                  "abbreviation": "RB"
+                },
+                "team": {
+                  "id": "11"
+                },
+                "active": true
+              },
+              "team": {
+                "id": "11"
+              }
+            }
+          ]
+        },
+        {
+          "name": "receivingYards",
+          "displayName": "Receiving Leader",
+          "shortDisplayName": "REC",
+          "abbreviation": "RECYDS",
+          "leaders": [
+            {
+              "displayValue": "9 REC, 126 YDS, 1 TD",
+              "value": 126.0,
+              "athlete": {
+                "id": "16800",
+                "fullName": "Davante Adams",
+                "displayName": "Davante Adams",
+                "shortName": "D. Adams",
+                "links": [
+                  {
+                    "rel": [
+                      "playercard",
+                      "desktop",
+                      "athlete"
+                    ],
+                    "href": "https://www.espn.com/nfl/player/_/id/16800/davante-adams"
+                  }
+                ],
+                "headshot": "https://a.espncdn.com/i/headshots/nfl/players/full/16800.png",
+                "jersey": "17",
+                "position": {
+                  "abbreviation": "WR"
+                },
+                "team": {
+                  "id": "13"
+                },
+                "active": true
+              },
+              "team": {
+                "id": "13"
+              }
+            }
+          ]
+        }
+      ],
+      "format": {
+        "regulation": {
+          "periods": 4
+        }
+      },
+      "startDate": "2022-11-13T21:05Z",
+      "broadcast": "CBS",
+      "geoBroadcasts": [
+        {
+          "type": {
+            "id": "1",
+            "shortName": "TV"
+          },
+          "market": {
+            "id": "1",
+            "type": "National"
+          },
+          "media": {
+            "shortName": "CBS"
+          },
+          "lang": "en",
+          "region": "us"
+        }
+      ],
+      "highlights": [],
+      "headlines": [
+        {
+          "type": "Recap",
+          "description": "\u2014 Jeff Saturday joked that the Indianapolis Colts will start calling zone-read plays for 37-year-old quarterback Matt Ryan.",
+          "shortLinkText": "Matt Ryan, interim coach Saturday rally Colts past Raiders"
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "language": "en-US",
+      "rel": [
+        "summary",
+        "desktop",
+        "event"
+      ],
+      "href": "https://www.espn.com/nfl/game/_/gameId/401437840/colts-raiders",
+      "text": "Gamecast",
+      "shortText": "Gamecast",
+      "isExternal": false,
+      "isPremium": false
+    },
+    {
+      "language": "en-US",
+      "rel": [
+        "boxscore",
+        "desktop",
+        "event"
+      ],
+      "href": "https://www.espn.com/nfl/boxscore/_/gameId/401437840",
+      "text": "Box Score",
+      "shortText": "Box Score",
+      "isExternal": false,
+      "isPremium": false
+    },
+    {
+      "language": "en-US",
+      "rel": [
+        "pbp",
+        "desktop",
+        "event"
+      ],
+      "href": "https://www.espn.com/nfl/playbyplay/_/gameId/401437840",
+      "text": "Play-by-Play",
+      "shortText": "Play-by-Play",
+      "isExternal": false,
+      "isPremium": false
+    },
+    {
+      "language": "en-US",
+      "rel": [
+        "recap",
+        "desktop",
+        "event"
+      ],
+      "href": "https://www.espn.com/nfl/recap?gameId=401437840",
+      "text": "Recap",
+      "shortText": "Recap",
+      "isExternal": false,
+      "isPremium": false
+    }
+  ],
+  "status": {
+    "clock": 0.0,
+    "displayClock": "0:00",
+    "period": 4,
+    "type": {
+      "id": "3",
+      "name": "STATUS_FINAL",
+      "state": "post",
+      "completed": true,
+      "description": "Final",
+      "detail": "Final",
+      "shortDetail": "Final"
+    }
+  }
+}

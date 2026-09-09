@@ -1,0 +1,592 @@
+{
+  "id": "401772796",
+  "uid": "s:20~l:28~e:401772796",
+  "date": "2025-12-14T18:00Z",
+  "name": "Baltimore Ravens at Cincinnati Bengals",
+  "shortName": "BAL @ CIN",
+  "season": {
+    "year": 2025,
+    "type": 2,
+    "slug": "regular-season"
+  },
+  "week": {
+    "number": 15
+  },
+  "competitions": [
+    {
+      "id": "401772796",
+      "uid": "s:20~l:28~e:401772796~c:401772796",
+      "date": "2025-12-14T18:00Z",
+      "attendance": 64907,
+      "type": {
+        "id": "1",
+        "abbreviation": "STD"
+      },
+      "timeValid": true,
+      "neutralSite": false,
+      "conferenceCompetition": false,
+      "playByPlayAvailable": true,
+      "recent": false,
+      "venue": {
+        "id": "3874",
+        "fullName": "Paycor Stadium",
+        "address": {
+          "city": "Cincinnati",
+          "state": "OH",
+          "country": "USA"
+        },
+        "indoor": false
+      },
+      "competitors": [
+        {
+          "id": "4",
+          "uid": "s:20~l:28~t:4",
+          "type": "team",
+          "order": 0,
+          "homeAway": "home",
+          "winner": false,
+          "team": {
+            "id": "4",
+            "uid": "s:20~l:28~t:4",
+            "location": "Cincinnati",
+            "name": "Bengals",
+            "abbreviation": "CIN",
+            "displayName": "Cincinnati Bengals",
+            "shortDisplayName": "Bengals",
+            "color": "fb4f14",
+            "alternateColor": "000000",
+            "isActive": true,
+            "venue": {
+              "id": "3874"
+            },
+            "links": [
+              {
+                "rel": [
+                  "clubhouse",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/_/name/cin/cincinnati-bengals",
+                "text": "Clubhouse",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "roster",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/roster/_/name/cin/cincinnati-bengals",
+                "text": "Roster",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "roster",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:4&section=roster",
+                "text": "Roster",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "stats",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/stats/_/name/cin/cincinnati-bengals",
+                "text": "Statistics",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "stats",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:4&section=stats",
+                "text": "Statistics",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "schedule",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/schedule/_/name/cin",
+                "text": "Schedule",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "schedule",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:4&section=scores",
+                "text": "Schedule",
+                "isExternal": false,
+                "isPremium": false
+              }
+            ],
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/cin.png"
+          },
+          "score": "0",
+          "linescores": [
+            {
+              "value": 0.0,
+              "displayValue": "0",
+              "period": 1
+            },
+            {
+              "value": 0.0,
+              "displayValue": "0",
+              "period": 2
+            },
+            {
+              "value": 0.0,
+              "displayValue": "0",
+              "period": 3
+            },
+            {
+              "value": 0.0,
+              "displayValue": "0",
+              "period": 4
+            }
+          ],
+          "statistics": [],
+          "curatedRank": {
+            "current": 99
+          },
+          "records": [
+            {
+              "name": "overall",
+              "abbreviation": "Game",
+              "type": "total",
+              "summary": "4-10"
+            },
+            {
+              "name": "Home",
+              "type": "home",
+              "summary": "2-5"
+            },
+            {
+              "name": "Road",
+              "type": "road",
+              "summary": "2-5"
+            }
+          ]
+        },
+        {
+          "id": "33",
+          "uid": "s:20~l:28~t:33",
+          "type": "team",
+          "order": 1,
+          "homeAway": "away",
+          "winner": true,
+          "team": {
+            "id": "33",
+            "uid": "s:20~l:28~t:33",
+            "location": "Baltimore",
+            "name": "Ravens",
+            "abbreviation": "BAL",
+            "displayName": "Baltimore Ravens",
+            "shortDisplayName": "Ravens",
+            "color": "29126f",
+            "alternateColor": "000000",
+            "isActive": true,
+            "venue": {
+              "id": "3814"
+            },
+            "links": [
+              {
+                "rel": [
+                  "clubhouse",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/_/name/bal/baltimore-ravens",
+                "text": "Clubhouse",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "roster",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/roster/_/name/bal/baltimore-ravens",
+                "text": "Roster",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "roster",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:33&section=roster",
+                "text": "Roster",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "stats",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/stats/_/name/bal/baltimore-ravens",
+                "text": "Statistics",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "stats",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:33&section=stats",
+                "text": "Statistics",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "schedule",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/schedule/_/name/bal",
+                "text": "Schedule",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "schedule",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:33&section=scores",
+                "text": "Schedule",
+                "isExternal": false,
+                "isPremium": false
+              }
+            ],
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/bal.png"
+          },
+          "score": "24",
+          "linescores": [
+            {
+              "value": 0.0,
+              "displayValue": "0",
+              "period": 1
+            },
+            {
+              "value": 14.0,
+              "displayValue": "14",
+              "period": 2
+            },
+            {
+              "value": 3.0,
+              "displayValue": "3",
+              "period": 3
+            },
+            {
+              "value": 7.0,
+              "displayValue": "7",
+              "period": 4
+            }
+          ],
+          "statistics": [],
+          "curatedRank": {
+            "current": 99
+          },
+          "records": [
+            {
+              "name": "overall",
+              "abbreviation": "Game",
+              "type": "total",
+              "summary": "7-7"
+            },
+            {
+              "name": "Home",
+              "type": "home",
+              "summary": "3-5"
+            },
+            {
+              "name": "Road",
+              "type": "road",
+              "summary": "4-2"
+            }
+          ]
+        }
+      ],
+      "notes": [],
+      "status": {
+        "clock": 0.0,
+        "displayClock": "0:00",
+        "period": 4,
+        "type": {
+          "id": "3",
+          "name": "STATUS_FINAL",
+          "state": "post",
+          "completed": true,
+          "description": "Final",
+          "detail": "Final",
+          "shortDetail": "Final"
+        },
+        "isTBDFlex": false
+      },
+      "broadcasts": [
+        {
+          "market": "national",
+          "names": [
+            "CBS"
+          ]
+        }
+      ],
+      "leaders": [
+        {
+          "name": "passingYards",
+          "displayName": "Passing Leader",
+          "shortDisplayName": "PASS",
+          "abbreviation": "PYDS",
+          "leaders": [
+            {
+              "displayValue": "25/39, 225 YDS, 2 INT",
+              "value": 225.0,
+              "athlete": {
+                "id": "3915511",
+                "fullName": "Joe Burrow",
+                "displayName": "Joe Burrow",
+                "shortName": "J. Burrow",
+                "links": [
+                  {
+                    "rel": [
+                      "playercard",
+                      "desktop",
+                      "athlete"
+                    ],
+                    "href": "https://www.espn.com/nfl/player/_/id/3915511/joe-burrow"
+                  }
+                ],
+                "headshot": "https://a.espncdn.com/i/headshots/nfl/players/full/3915511.png",
+                "jersey": "9",
+                "position": {
+                  "abbreviation": "QB"
+                },
+                "team": {
+                  "id": "4"
+                },
+                "active": true
+              },
+              "team": {
+                "id": "4"
+              }
+            }
+          ]
+        },
+        {
+          "name": "rushingYards",
+          "displayName": "Rushing Leader",
+          "shortDisplayName": "RUSH",
+          "abbreviation": "RYDS",
+          "leaders": [
+            {
+              "displayValue": "11 CAR, 100 YDS",
+              "value": 100.0,
+              "athlete": {
+                "id": "3043078",
+                "fullName": "Derrick Henry",
+                "displayName": "Derrick Henry",
+                "shortName": "D. Henry",
+                "links": [
+                  {
+                    "rel": [
+                      "playercard",
+                      "desktop",
+                      "athlete"
+                    ],
+                    "href": "https://www.espn.com/nfl/player/_/id/3043078/derrick-henry"
+                  }
+                ],
+                "headshot": "https://a.espncdn.com/i/headshots/nfl/players/full/3043078.png",
+                "jersey": "22",
+                "position": {
+                  "abbreviation": "RB"
+                },
+                "team": {
+                  "id": "33"
+                },
+                "active": true
+              },
+              "team": {
+                "id": "33"
+              }
+            }
+          ]
+        },
+        {
+          "name": "receivingYards",
+          "displayName": "Receiving Leader",
+          "shortDisplayName": "REC",
+          "abbreviation": "RECYDS",
+          "leaders": [
+            {
+              "displayValue": "10 REC, 132 YDS",
+              "value": 132.0,
+              "athlete": {
+                "id": "4362628",
+                "fullName": "Ja'Marr Chase",
+                "displayName": "Ja'Marr Chase",
+                "shortName": "J. Chase",
+                "links": [
+                  {
+                    "rel": [
+                      "playercard",
+                      "desktop",
+                      "athlete"
+                    ],
+                    "href": "https://www.espn.com/nfl/player/_/id/4362628/jamarr-chase"
+                  }
+                ],
+                "headshot": "https://a.espncdn.com/i/headshots/nfl/players/full/4362628.png",
+                "jersey": "1",
+                "position": {
+                  "abbreviation": "WR"
+                },
+                "team": {
+                  "id": "4"
+                },
+                "active": true
+              },
+              "team": {
+                "id": "4"
+              }
+            }
+          ]
+        }
+      ],
+      "format": {
+        "regulation": {
+          "periods": 4
+        }
+      },
+      "startDate": "2025-12-14T18:00Z",
+      "broadcast": "CBS",
+      "geoBroadcasts": [
+        {
+          "type": {
+            "id": "1",
+            "shortName": "TV"
+          },
+          "market": {
+            "id": "1",
+            "type": "National"
+          },
+          "media": {
+            "shortName": "CBS"
+          },
+          "lang": "en",
+          "region": "us"
+        }
+      ],
+      "highlights": [],
+      "headlines": [
+        {
+          "type": "Recap",
+          "description": "\u2014 The Baltimore Ravens served notice that they have plenty of fight left as they pursue a third straight AFC North title.",
+          "shortLinkText": "Lamar Jackson's 2 TD passes, long pick-6 propel Ravens to 24-0 win over Bengals"
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "language": "en-US",
+      "rel": [
+        "summary",
+        "desktop",
+        "event"
+      ],
+      "href": "https://www.espn.com/nfl/game/_/gameId/401772796/ravens-bengals",
+      "text": "Gamecast",
+      "shortText": "Gamecast",
+      "isExternal": false,
+      "isPremium": false
+    },
+    {
+      "language": "en-US",
+      "rel": [
+        "boxscore",
+        "desktop",
+        "event"
+      ],
+      "href": "https://www.espn.com/nfl/boxscore/_/gameId/401772796",
+      "text": "Box Score",
+      "shortText": "Box Score",
+      "isExternal": false,
+      "isPremium": false
+    },
+    {
+      "language": "en-US",
+      "rel": [
+        "pbp",
+        "desktop",
+        "event"
+      ],
+      "href": "https://www.espn.com/nfl/playbyplay/_/gameId/401772796",
+      "text": "Play-by-Play",
+      "shortText": "Play-by-Play",
+      "isExternal": false,
+      "isPremium": false
+    },
+    {
+      "language": "en-US",
+      "rel": [
+        "recap",
+        "desktop",
+        "event"
+      ],
+      "href": "https://www.espn.com/nfl/recap?gameId=401772796",
+      "text": "Recap",
+      "shortText": "Recap",
+      "isExternal": false,
+      "isPremium": false
+    }
+  ],
+  "status": {
+    "clock": 0.0,
+    "displayClock": "0:00",
+    "period": 4,
+    "type": {
+      "id": "3",
+      "name": "STATUS_FINAL",
+      "state": "post",
+      "completed": true,
+      "description": "Final",
+      "detail": "Final",
+      "shortDetail": "Final"
+    }
+  }
+}

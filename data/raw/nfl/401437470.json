@@ -1,0 +1,586 @@
+{
+  "id": "401437470",
+  "uid": "s:20~l:28~e:401437470",
+  "date": "2022-10-03T00:20Z",
+  "name": "Kansas City Chiefs at Tampa Bay Buccaneers",
+  "shortName": "KC @ TB",
+  "season": {
+    "year": 2022,
+    "type": 2,
+    "slug": "regular-season"
+  },
+  "week": {
+    "number": 4
+  },
+  "competitions": [
+    {
+      "id": "401437470",
+      "uid": "s:20~l:28~e:401437470~c:401437470",
+      "date": "2022-10-03T00:20Z",
+      "attendance": 68348,
+      "type": {
+        "id": "1",
+        "abbreviation": "STD"
+      },
+      "timeValid": true,
+      "neutralSite": false,
+      "conferenceCompetition": false,
+      "playByPlayAvailable": true,
+      "recent": false,
+      "venue": {
+        "id": "3886",
+        "fullName": "Raymond James Stadium",
+        "address": {
+          "city": "Tampa",
+          "state": "FL",
+          "country": "USA"
+        },
+        "indoor": false
+      },
+      "competitors": [
+        {
+          "id": "27",
+          "uid": "s:20~l:28~t:27",
+          "type": "team",
+          "order": 0,
+          "homeAway": "home",
+          "winner": false,
+          "team": {
+            "id": "27",
+            "uid": "s:20~l:28~t:27",
+            "location": "Tampa Bay",
+            "name": "Buccaneers",
+            "abbreviation": "TB",
+            "displayName": "Tampa Bay Buccaneers",
+            "shortDisplayName": "Buccaneers",
+            "color": "A80D08",
+            "alternateColor": "3e3a35",
+            "isActive": true,
+            "venue": {
+              "id": "3886"
+            },
+            "links": [
+              {
+                "rel": [
+                  "clubhouse",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/_/name/tb/tampa-bay-buccaneers",
+                "text": "Clubhouse",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "roster",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/roster/_/name/tb/tampa-bay-buccaneers",
+                "text": "Roster",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "roster",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:27&section=roster",
+                "text": "Roster",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "stats",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/stats/_/name/tb/tampa-bay-buccaneers",
+                "text": "Statistics",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "stats",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:27&section=stats",
+                "text": "Statistics",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "schedule",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/schedule/_/name/tb",
+                "text": "Schedule",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "schedule",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:27&section=scores",
+                "text": "Schedule",
+                "isExternal": false,
+                "isPremium": false
+              }
+            ],
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/tb.png"
+          },
+          "score": "31",
+          "linescores": [
+            {
+              "value": 3.0,
+              "displayValue": "3",
+              "period": 1
+            },
+            {
+              "value": 14.0,
+              "displayValue": "14",
+              "period": 2
+            },
+            {
+              "value": 7.0,
+              "displayValue": "7",
+              "period": 3
+            },
+            {
+              "value": 7.0,
+              "displayValue": "7",
+              "period": 4
+            }
+          ],
+          "statistics": [],
+          "records": [
+            {
+              "name": "overall",
+              "abbreviation": "Game",
+              "type": "total",
+              "summary": "2-2"
+            },
+            {
+              "name": "Home",
+              "type": "home",
+              "summary": "0-2"
+            },
+            {
+              "name": "Road",
+              "type": "road",
+              "summary": "2-0"
+            }
+          ]
+        },
+        {
+          "id": "12",
+          "uid": "s:20~l:28~t:12",
+          "type": "team",
+          "order": 1,
+          "homeAway": "away",
+          "winner": true,
+          "team": {
+            "id": "12",
+            "uid": "s:20~l:28~t:12",
+            "location": "Kansas City",
+            "name": "Chiefs",
+            "abbreviation": "KC",
+            "displayName": "Kansas City Chiefs",
+            "shortDisplayName": "Chiefs",
+            "color": "BE1415",
+            "alternateColor": "ffb612",
+            "isActive": true,
+            "venue": {
+              "id": "3622"
+            },
+            "links": [
+              {
+                "rel": [
+                  "clubhouse",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/_/name/kc/kansas-city-chiefs",
+                "text": "Clubhouse",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "roster",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/roster/_/name/kc/kansas-city-chiefs",
+                "text": "Roster",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "roster",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:12&section=roster",
+                "text": "Roster",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "stats",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/stats/_/name/kc/kansas-city-chiefs",
+                "text": "Statistics",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "stats",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:12&section=stats",
+                "text": "Statistics",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "schedule",
+                  "desktop",
+                  "team"
+                ],
+                "href": "https://www.espn.com/nfl/team/schedule/_/name/kc",
+                "text": "Schedule",
+                "isExternal": false,
+                "isPremium": false
+              },
+              {
+                "rel": [
+                  "schedule",
+                  "sportscenter",
+                  "app",
+                  "team"
+                ],
+                "href": "sportscenter://x-callback-url/showClubhouse?uid=s:20~l:28~t:12&section=scores",
+                "text": "Schedule",
+                "isExternal": false,
+                "isPremium": false
+              }
+            ],
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/kc.png"
+          },
+          "score": "41",
+          "linescores": [
+            {
+              "value": 14.0,
+              "displayValue": "14",
+              "period": 1
+            },
+            {
+              "value": 14.0,
+              "displayValue": "14",
+              "period": 2
+            },
+            {
+              "value": 10.0,
+              "displayValue": "10",
+              "period": 3
+            },
+            {
+              "value": 3.0,
+              "displayValue": "3",
+              "period": 4
+            }
+          ],
+          "statistics": [],
+          "records": [
+            {
+              "name": "overall",
+              "abbreviation": "Game",
+              "type": "total",
+              "summary": "3-1"
+            },
+            {
+              "name": "Home",
+              "type": "home",
+              "summary": "1-0"
+            },
+            {
+              "name": "Road",
+              "type": "road",
+              "summary": "2-1"
+            }
+          ]
+        }
+      ],
+      "notes": [],
+      "status": {
+        "clock": 0.0,
+        "displayClock": "0:00",
+        "period": 4,
+        "type": {
+          "id": "3",
+          "name": "STATUS_FINAL",
+          "state": "post",
+          "completed": true,
+          "description": "Final",
+          "detail": "Final",
+          "shortDetail": "Final"
+        },
+        "isTBDFlex": false
+      },
+      "broadcasts": [
+        {
+          "market": "national",
+          "names": [
+            "NBC"
+          ]
+        }
+      ],
+      "leaders": [
+        {
+          "name": "passingYards",
+          "displayName": "Passing Leader",
+          "shortDisplayName": "PASS",
+          "abbreviation": "PYDS",
+          "leaders": [
+            {
+              "displayValue": "39/52, 385 YDS, 3 TD",
+              "value": 385.0,
+              "athlete": {
+                "id": "2330",
+                "fullName": "Tom Brady",
+                "displayName": "Tom Brady",
+                "shortName": "T. Brady",
+                "links": [
+                  {
+                    "rel": [
+                      "playercard",
+                      "desktop",
+                      "athlete"
+                    ],
+                    "href": "https://www.espn.com/nfl/player/_/id/2330/tom-brady"
+                  }
+                ],
+                "headshot": "https://a.espncdn.com/i/headshots/nfl/players/full/2330.png",
+                "jersey": "12",
+                "position": {
+                  "abbreviation": "QB"
+                },
+                "team": {
+                  "id": "27"
+                },
+                "active": false
+              },
+              "team": {
+                "id": "27"
+              }
+            }
+          ]
+        },
+        {
+          "name": "rushingYards",
+          "displayName": "Rushing Leader",
+          "shortDisplayName": "RUSH",
+          "abbreviation": "RYDS",
+          "leaders": [
+            {
+              "displayValue": "19 CAR, 92 YDS, 1 TD",
+              "value": 92.0,
+              "athlete": {
+                "id": "4242214",
+                "fullName": "Clyde Edwards-Helaire",
+                "displayName": "Clyde Edwards-Helaire",
+                "shortName": "C. Edwards-Helaire",
+                "links": [
+                  {
+                    "rel": [
+                      "playercard",
+                      "desktop",
+                      "athlete"
+                    ],
+                    "href": "https://www.espn.com/nfl/player/_/id/4242214/clyde-edwards-helaire"
+                  }
+                ],
+                "headshot": "https://a.espncdn.com/i/headshots/nfl/players/full/4242214.png",
+                "jersey": "26",
+                "position": {
+                  "abbreviation": "RB"
+                },
+                "team": {
+                  "id": "12"
+                },
+                "active": true
+              },
+              "team": {
+                "id": "12"
+              }
+            }
+          ]
+        },
+        {
+          "name": "receivingYards",
+          "displayName": "Receiving Leader",
+          "shortDisplayName": "REC",
+          "abbreviation": "RECYDS",
+          "leaders": [
+            {
+              "displayValue": "8 REC, 103 YDS, 2 TD",
+              "value": 103.0,
+              "athlete": {
+                "id": "16737",
+                "fullName": "Mike Evans",
+                "displayName": "Mike Evans",
+                "shortName": "M. Evans",
+                "links": [
+                  {
+                    "rel": [
+                      "playercard",
+                      "desktop",
+                      "athlete"
+                    ],
+                    "href": "https://www.espn.com/nfl/player/_/id/16737/mike-evans"
+                  }
+                ],
+                "headshot": "https://a.espncdn.com/i/headshots/nfl/players/full/16737.png",
+                "jersey": "5",
+                "position": {
+                  "abbreviation": "WR"
+                },
+                "team": {
+                  "id": "27"
+                },
+                "active": true
+              },
+              "team": {
+                "id": "27"
+              }
+            }
+          ]
+        }
+      ],
+      "format": {
+        "regulation": {
+          "periods": 4
+        }
+      },
+      "startDate": "2022-10-03T00:20Z",
+      "broadcast": "NBC",
+      "geoBroadcasts": [
+        {
+          "type": {
+            "id": "1",
+            "shortName": "TV"
+          },
+          "market": {
+            "id": "1",
+            "type": "National"
+          },
+          "media": {
+            "shortName": "NBC"
+          },
+          "lang": "en",
+          "region": "us"
+        }
+      ],
+      "highlights": [],
+      "headlines": [
+        {
+          "type": "Recap",
+          "description": "\u2014 Patrick Mahomes had all the answers for solving Tampa Bay's stingy defense, winning his latest matchup against Tom Brady in the stadium where the seven-time Super Bowl winner dealt him one of his most disappointing losses.",
+          "shortLinkText": "Mahomes throws for 3 TDs, Chiefs overwhelm Buccaneers 41-31"
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "language": "en-US",
+      "rel": [
+        "summary",
+        "desktop",
+        "event"
+      ],
+      "href": "https://www.espn.com/nfl/game/_/gameId/401437470/chiefs-buccaneers",
+      "text": "Gamecast",
+      "shortText": "Gamecast",
+      "isExternal": false,
+      "isPremium": false
+    },
+    {
+      "language": "en-US",
+      "rel": [
+        "boxscore",
+        "desktop",
+        "event"
+      ],
+      "href": "https://www.espn.com/nfl/boxscore/_/gameId/401437470",
+      "text": "Box Score",
+      "shortText": "Box Score",
+      "isExternal": false,
+      "isPremium": false
+    },
+    {
+      "language": "en-US",
+      "rel": [
+        "pbp",
+        "desktop",
+        "event"
+      ],
+      "href": "https://www.espn.com/nfl/playbyplay/_/gameId/401437470",
+      "text": "Play-by-Play",
+      "shortText": "Play-by-Play",
+      "isExternal": false,
+      "isPremium": false
+    },
+    {
+      "language": "en-US",
+      "rel": [
+        "recap",
+        "desktop",
+        "event"
+      ],
+      "href": "https://www.espn.com/nfl/recap?gameId=401437470",
+      "text": "Recap",
+      "shortText": "Recap",
+      "isExternal": false,
+      "isPremium": false
+    }
+  ],
+  "status": {
+    "clock": 0.0,
+    "displayClock": "0:00",
+    "period": 4,
+    "type": {
+      "id": "3",
+      "name": "STATUS_FINAL",
+      "state": "post",
+      "completed": true,
+      "description": "Final",
+      "detail": "Final",
+      "shortDetail": "Final"
+    }
+  }
+}
