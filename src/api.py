@@ -1,3 +1,5 @@
+from datetime import datetime
+from zoneinfo import ZoneInfo
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import HTMLResponse
 from src.nfl_prediction import get_nfl_prediction
@@ -25,6 +27,10 @@ def nfl_report(game_id: str):
     winner = result["winner"]
     spread = result["spread"]
     total = result["total"]
+
+    game_date = datetime.fromisoformat(result["game_date"])
+    game_date = game_date.astimezone(ZoneInfo("America/Chicago"))
+    game_date_display = game_date.strftime("%A, %B %d, %Y • %I:%M %p CT").replace(" 0", " ")
 
     spread_market = (
         f'{spread["market_team"]} {spread["market_line"]:+.1f}'
@@ -78,8 +84,12 @@ def nfl_report(game_id: str):
                 font-size: 24px;
                 margin-bottom: 5px;
             }}
+            .game-date {{
+                color: #aaa;
+                margin-bottom: 3px;
+            }}
             .game-id {{
-                color: #888;
+                color: #777;
                 margin-bottom: 25px;
             }}
             .card {{
@@ -117,6 +127,7 @@ def nfl_report(game_id: str):
     <body>
         <div class="container">
             <h1>{result["away_team"]} @ {result["home_team"]}</h1>
+            <div class="game-date">{game_date_display}</div>
             <div class="game-id">ESPN Game ID: {result["game_id"]}</div>
 
             <div class="card">

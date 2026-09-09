@@ -223,6 +223,7 @@ def get_nfl_prediction(game_id):
 
     return {
         "game_id": str(game_id),
+        "game_date": game_date.isoformat(),
         "away_team": away_team,
         "home_team": home_team,
         "winner": {
