@@ -81,6 +81,19 @@ def american_odds(probability):
         return round(-100 * probability / (1 - probability))
     return round(100 * (1 - probability) / probability)
 
+def implied_probability(odds):
+    if odds < 0:
+        return -odds / (-odds + 100)
+    return 100 / (odds + 100)
+
+def expected_value(probability, odds):
+    if odds > 0:
+        profit = odds / 100
+    else:
+        profit = 100 / abs(odds)
+
+    return probability * profit - (1 - probability)
+
 def get_nfl_prediction(game_id):
     response = requests.get(
         f"https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event={game_id}",
@@ -105,8 +118,19 @@ def get_nfl_prediction(game_id):
     )
 
     pickcenter = data.get("pickcenter", [])
-    market_spread = pickcenter[0].get("spread") if pickcenter else None
-    market_total = pickcenter[0].get("overUnder") if pickcenter else None
+    market = pickcenter[0] if pickcenter else {}
+
+    market_spread = market.get("spread")
+    market_total = market.get("overUnder")
+
+    home_moneyline = market.get("homeTeamOdds", {}).get("moneyLine")
+    away_moneyline = market.get("awayTeamOdds", {}).get("moneyLine")
+
+    if home_moneyline is not None:
+        home_moneyline = float(home_moneyline)
+
+    if away_moneyline is not None:
+        away_moneyline = float(away_moneyline)
 
     home = team_history(home_team, game_date)
     away = team_history(away_team, game_date)
@@ -157,9 +181,77 @@ def get_nfl_prediction(game_id):
     if home_probability >= 0.5:
         winner = home_team
         winner_probability = home_probability
+        winner_market_odds = home_moneyline
     else:
         winner = away_team
         winner_probability = away_probability
+        winner_market_odds = away_moneyline
+
+    winner_result = {
+        "pick": winner,
+        "probability": round(float(winner_probability), 3),
+        "fair_odds": american_odds(winner_probability),
+        "market_odds": None,
+        "market_breakeven_probability": None,
+        "value_pick": None,
+        "value_model_probability": None,
+        "value_fair_odds": None,
+        "value_market_odds": None,
+        "value_breakeven_probability": None,
+        "value_edge": None,
+        "expected_value": None
+    }
+
+    if winner_market_odds is not None:
+        winner_result["market_odds"] = round(winner_market_odds)
+        winner_result["market_breakeven_probability"] = round(
+            implied_probability(winner_market_odds), 3
+        )
+
+    if home_moneyline is not None and away_moneyline is not None:
+        home_breakeven = implied_probability(home_moneyline)
+        away_breakeven = implied_probability(away_moneyline)
+
+        home_edge = home_probability - home_breakeven
+        away_edge = away_probability - away_breakeven
+
+        if home_edge >= away_edge:
+            value_pick = home_team
+            value_probability = home_probability
+            value_market_odds = home_moneyline
+            value_breakeven = home_breakeven
+            value_edge = home_edge
+        else:
+            value_pick = away_team
+            value_probability = away_probability
+            value_market_odds = away_moneyline
+            value_breakeven = away_breakeven
+            value_edge = away_edge
+
+        if value_edge > 0:
+            winner_result["value_pick"] = value_pick
+            winner_result["value_model_probability"] = round(
+                float(value_probability), 3
+            )
+            winner_result["value_fair_odds"] = american_odds(
+                value_probability
+            )
+            winner_result["value_market_odds"] = round(
+                value_market_odds
+            )
+            winner_result["value_breakeven_probability"] = round(
+                value_breakeven, 3
+            )
+            winner_result["value_edge"] = round(
+                float(value_edge), 3
+            )
+            winner_result["expected_value"] = round(
+                expected_value(
+                    value_probability,
+                    value_market_odds
+                ),
+                3
+            )
 
     X_spread = pd.DataFrame([row])[spread_features]
     predicted_margin = spread_model.predict(X_spread)[0]
@@ -226,11 +318,7 @@ def get_nfl_prediction(game_id):
         "game_date": game_date.isoformat(),
         "away_team": away_team,
         "home_team": home_team,
-        "winner": {
-            "pick": winner,
-            "probability": round(float(winner_probability), 3),
-            "fair_odds": american_odds(winner_probability)
-        },
+        "winner": winner_result,
         "spread": spread_result,
         "total": total_result
     }
