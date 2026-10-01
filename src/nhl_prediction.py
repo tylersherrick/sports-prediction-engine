@@ -3,9 +3,9 @@ import pandas as pd
 import requests
 
 
-FEATURES_FILE = "data/processed/nhl_features.csv"
-SKATER_FEATURES_FILE = "data/processed/nhl_skater_features.csv"
-GOALIE_FEATURES_FILE = "data/processed/nhl_goalie_features.csv"
+FEATURES_FILE = "models/nhl_team_state.csv"
+SKATER_FEATURES_FILE = "models/nhl_skater_state.csv"
+GOALIE_FEATURES_FILE = "models/nhl_goalie_state.csv"
 
 WINNER_MODEL = "models/nhl_winner.joblib"
 PUCK_LINE_MODEL = "models/nhl_puck_line.joblib"
@@ -625,12 +625,14 @@ def get_nhl_prediction(game_id):
 
     if home_probability >= 0.5:
         winner = home_team
+
         winner_probability = (
             home_probability
         )
 
     else:
         winner = away_team
+
         winner_probability = (
             away_probability
         )
