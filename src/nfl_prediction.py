@@ -2,7 +2,7 @@ import joblib
 import pandas as pd
 import requests
 
-GAMES_FILE = "data/processed/nfl_games.csv"
+GAMES_FILE = "models/nfl_games_state.csv"
 WINNER_MODEL = "models/nfl_2026_predictor.joblib"
 SPREAD_MODEL = "models/nfl_2026_spread.joblib"
 TOTAL_MODEL = "models/nfl_2026_total.joblib"
