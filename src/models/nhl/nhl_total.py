@@ -1,23 +1,33 @@
 from pathlib import Path
 
+import joblib
 import pandas as pd
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.impute import SimpleImputer
-from sklearn.metrics import mean_absolute_error
 from sklearn.pipeline import Pipeline
+
 
 INPUT_FILE = Path(
     "data/processed/nhl_features.csv"
 )
 
+MODEL_FILE = Path(
+    "models/nhl_total.joblib"
+)
+
 TRAIN_SEASONS = [
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
     2022,
     2023,
     2024,
-    2025
+    2025,
+    2026
 ]
-
-TEST_SEASON = 2026
 
 FEATURES = [
     "home_goals_for_last_5",
@@ -64,6 +74,7 @@ FEATURES = [
     "rest_diff"
 ]
 
+
 def main():
     data = pd.read_csv(
         INPUT_FILE
@@ -75,24 +86,11 @@ def main():
         )
     ].copy()
 
-    test = data[
-        data["season"]
-        == TEST_SEASON
-    ].copy()
-
     X_train = train[
         FEATURES
     ]
 
     y_train = train[
-        "total_goals"
-    ]
-
-    X_test = test[
-        FEATURES
-    ]
-
-    y_test = test[
         "total_goals"
     ]
 
@@ -121,44 +119,31 @@ def main():
         y_train
     )
 
-    predictions = model.predict(
-        X_test
+    MODEL_FILE.parent.mkdir(
+        parents=True,
+        exist_ok=True
     )
 
-    mae = mean_absolute_error(
-        y_test,
-        predictions
-    )
-
-    baseline_prediction = (
-        y_train.mean()
-    )
-
-    baseline_predictions = [
-        baseline_prediction
-    ] * len(y_test)
-
-    baseline_mae = mean_absolute_error(
-        y_test,
-        baseline_predictions
+    joblib.dump(
+        {
+            "model": model,
+            "features": FEATURES,
+            "train_seasons": TRAIN_SEASONS
+        },
+        MODEL_FILE
     )
 
     print(
-        "NHL Total Model"
+        "NHL Total Production Model"
     )
 
     print(
-        "==============="
+        "=========================="
     )
 
     print(
-        f"Train seasons: "
+        f"Training seasons: "
         f"{TRAIN_SEASONS}"
-    )
-
-    print(
-        f"Test season: "
-        f"{TEST_SEASON}"
     )
 
     print(
@@ -167,95 +152,17 @@ def main():
     )
 
     print(
-        f"Test games: "
-        f"{len(test)}"
-    )
-
-    print(
         f"Features: "
         f"{len(FEATURES)}"
     )
 
-    print(
-        f"\nTotal-goals MAE: "
-        f"{mae:.3f}"
-    )
+    print()
 
     print(
-        f"Baseline MAE: "
-        f"{baseline_mae:.3f}"
+        f"Saved: "
+        f"{MODEL_FILE}"
     )
 
-    print(
-        f"Training average total: "
-        f"{baseline_prediction:.3f}"
-    )
-
-    results = test[
-        [
-            "date",
-            "away_team",
-            "home_team",
-            "away_score",
-            "home_score",
-            "total_goals"
-        ]
-    ].copy()
-
-    results[
-        "predicted_total"
-    ] = predictions
-
-    results[
-        "total_error"
-    ] = (
-        results[
-            "predicted_total"
-        ]
-        - results[
-            "total_goals"
-        ]
-    ).abs()
-
-    print(
-        "\nLast 20 predictions:"
-    )
-
-    print(
-        results
-        .tail(20)
-        .to_string(
-            index=False
-        )
-    )
-
-    importances = (
-        model
-        .named_steps["model"]
-        .feature_importances_
-    )
-
-    importance = pd.DataFrame({
-        "feature": FEATURES,
-        "importance": importances
-    })
-
-    importance = importance.sort_values(
-        "importance",
-        ascending=False
-    )
-
-    print(
-        "\nTop 20 features:"
-    )
-
-    print(
-        importance
-        .head(20)
-        .to_string(
-            index=False
-        )
-    )
 
 if __name__ == "__main__":
     main()

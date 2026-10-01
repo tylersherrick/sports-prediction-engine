@@ -11,63 +11,15 @@ SUMMARY_URL = "https://site.api.espn.com/apis/site/v2/sports/hockey/nhl/summary"
 
 BATCH_SIZE = 5
 
-SEASONS = [
-    {
-        "season": 2016,
-        "start": date(2015, 10, 7),
-        "end": date(2016, 4, 10)
-    },
-    {
-        "season": 2017,
-        "start": date(2016, 10, 12),
-        "end": date(2017, 4, 9)
-    },
-    {
-        "season": 2018,
-        "start": date(2017, 10, 4),
-        "end": date(2018, 4, 8)
-    },
-    {
-        "season": 2019,
-        "start": date(2018, 10, 3),
-        "end": date(2019, 4, 6)
-    },
-    {
-        "season": 2020,
-        "start": date(2019, 10, 2),
-        "end": date(2020, 3, 11)
-    },
-    {
-        "season": 2021,
-        "start": date(2021, 1, 13),
-        "end": date(2021, 5, 19)
-    },
-    {
-        "season": 2022,
-        "start": date(2021, 10, 12),
-        "end": date(2022, 4, 29)
-    },
-    {
-        "season": 2023,
-        "start": date(2022, 10, 7),
-        "end": date(2023, 4, 14)
-    },
-    {
-        "season": 2024,
-        "start": date(2023, 10, 10),
-        "end": date(2024, 4, 18)
-    },
-    {
-        "season": 2025,
-        "start": date(2024, 10, 4),
-        "end": date(2025, 4, 17)
-    },
-    {
-        "season": 2026,
-        "start": date(2025, 10, 7),
-        "end": date(2026, 4, 16)
-    }
-]
+SEASON = 2027
+
+START_DATE = date(
+    2026,
+    9,
+    29
+)
+
+END_DATE = date.today()
 
 
 def get_json(url, params):
@@ -87,7 +39,9 @@ def get_json(url, params):
             if attempt == 2:
                 raise error
 
-            print("Request failed. Retrying...")
+            print(
+                "Request failed. Retrying..."
+            )
 
             time.sleep(2)
 
@@ -113,11 +67,20 @@ def get_game_details(game_id):
     )
 
 
-def save_game(game, season):
+def is_completed(game):
+    return (
+        game
+        .get("status", {})
+        .get("type", {})
+        .get("completed", False)
+    )
+
+
+def save_game(game):
     game_id = game["id"]
 
     season_path = (
-        f"data/raw/nhl/{season}"
+        f"data/raw/nhl/{SEASON}"
     )
 
     game_path = (
@@ -195,13 +158,9 @@ def get_dates(
         )
 
 
-def collect_season(
-    season,
-    start_date,
-    end_date
-):
+def collect_current_season():
     season_path = (
-        f"data/raw/nhl/{season}"
+        f"data/raw/nhl/{SEASON}"
     )
 
     os.makedirs(
@@ -215,12 +174,12 @@ def collect_season(
 
     print(
         f"\nCollecting NHL "
-        f"{season - 1}-{season}..."
+        f"2026-2027 completed games..."
     )
 
     for game_date in get_dates(
-        start_date,
-        end_date
+        START_DATE,
+        END_DATE
     ):
         try:
             data = get_games(
@@ -252,6 +211,11 @@ def collect_season(
             if season_type != 2:
                 continue
 
+            if not is_completed(
+                game
+            ):
+                continue
+
             if game_id in seen_games:
                 continue
 
@@ -268,7 +232,7 @@ def collect_season(
 
         print(
             f"{game_date}: "
-            f"{len(games)} games"
+            f"{len(games)} completed games"
         )
 
         for start in range(
@@ -286,8 +250,7 @@ def collect_season(
                 futures = [
                     executor.submit(
                         save_game,
-                        game,
-                        season
+                        game
                     )
                     for game in batch
                 ]
@@ -314,11 +277,10 @@ def collect_season(
         - start_time
     )
 
+    print()
     print(
-        f"\nDone. Found "
-        f"{total_games} games from "
-        f"the {season - 1}-{season} "
-        f"regular season."
+        f"Done. Found "
+        f"{total_games} completed games."
     )
 
     print(
@@ -332,12 +294,7 @@ def main():
         exist_ok=True
     )
 
-    for season in SEASONS:
-        collect_season(
-            season["season"],
-            season["start"],
-            season["end"]
-        )
+    collect_current_season()
 
 
 if __name__ == "__main__":
