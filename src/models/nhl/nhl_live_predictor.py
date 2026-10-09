@@ -14,13 +14,32 @@ FEATURES_FILE = Path(
     "data/processed/nhl_features.csv"
 )
 
-MODEL_FILE = Path(
+WINNER_MODEL_FILE = Path(
     "models/nhl_winner.joblib"
+)
+
+PUCK_LINE_MODEL_FILE = Path(
+    "models/nhl_puck_line.joblib"
+)
+
+TOTAL_MODEL_FILE = Path(
+    "models/nhl_total.joblib"
 )
 
 LOG_FILE = Path(
     "data/processed/nhl_live_predictions.csv"
 )
+
+
+def load_model(path):
+    saved = joblib.load(
+        path
+    )
+
+    return (
+        saved["model"],
+        saved["features"]
+    )
 
 
 def get_games():
@@ -242,17 +261,26 @@ def main():
         }
     )
 
-    saved = joblib.load(
-        MODEL_FILE
+    (
+        winner_model,
+        winner_features
+    ) = load_model(
+        WINNER_MODEL_FILE
     )
 
-    model = saved[
-        "model"
-    ]
+    (
+        puck_line_model,
+        puck_line_features
+    ) = load_model(
+        PUCK_LINE_MODEL_FILE
+    )
 
-    features = saved[
-        "features"
-    ]
+    (
+        total_model,
+        total_features
+    ) = load_model(
+        TOTAL_MODEL_FILE
+    )
 
     games = get_games()
 
@@ -365,15 +393,15 @@ def main():
 
             continue
 
-        matchup = build_matchup(
-            features,
+        winner_matchup = build_matchup(
+            winner_features,
             home_row,
             away_row
         )
 
-        home_probability = (
-            model.predict_proba(
-                matchup
+        home_probability = float(
+            winner_model.predict_proba(
+                winner_matchup
             )[0][1]
         )
 
@@ -407,6 +435,52 @@ def main():
                 away_probability
             )
 
+        puck_line_matchup = build_matchup(
+            puck_line_features,
+            home_row,
+            away_row
+        )
+
+        predicted_home_margin = float(
+            puck_line_model.predict(
+                puck_line_matchup
+            )[0]
+        )
+
+        if predicted_home_margin >= 0:
+            puck_line_team = (
+                home_team[
+                    "displayName"
+                ]
+            )
+
+            puck_line_value = (
+                -predicted_home_margin
+            )
+
+        else:
+            puck_line_team = (
+                away_team[
+                    "displayName"
+                ]
+            )
+
+            puck_line_value = (
+                predicted_home_margin
+            )
+
+        total_matchup = build_matchup(
+            total_features,
+            home_row,
+            away_row
+        )
+
+        predicted_total = float(
+            total_model.predict(
+                total_matchup
+            )[0]
+        )
+
         print()
         print(
             f"{away_team['displayName']} "
@@ -414,7 +488,7 @@ def main():
         )
 
         print(
-            f"Prediction: "
+            f"Winner: "
             f"{predicted_winner} "
             f"({confidence:.1%})"
         )
@@ -427,6 +501,22 @@ def main():
         print(
             f"Away probability: "
             f"{away_probability:.1%}"
+        )
+
+        print(
+            f"Puck line: "
+            f"{puck_line_team} "
+            f"{puck_line_value:+.2f}"
+        )
+
+        print(
+            f"Predicted home margin: "
+            f"{predicted_home_margin:+.2f}"
+        )
+
+        print(
+            f"Predicted total: "
+            f"{predicted_total:.2f}"
         )
 
         new_predictions.append({
@@ -455,6 +545,20 @@ def main():
             ),
             "predicted_winner": (
                 predicted_winner
+            ),
+            "puck_line_team": (
+                puck_line_team
+            ),
+            "puck_line": (
+                predicted_home_margin
+                if predicted_home_margin < 0
+                else -predicted_home_margin
+            ),
+            "predicted_home_margin": (
+                predicted_home_margin
+            ),
+            "predicted_total": (
+                predicted_total
             )
         })
 
