@@ -1,109 +1,118 @@
 from pathlib import Path
 
-import joblib
 import pandas as pd
 
 FEATURES_FILE = Path(
     "data/processed/nhl_features.csv"
 )
 
-MODEL_FILE = Path(
-    "models/nhl_winner.joblib"
+PREDICTIONS_FILE = Path(
+    "data/processed/nhl_live_predictions.csv"
 )
-
-CURRENT_SEASON = 2027
 
 
 def main():
-    data = pd.read_csv(
+    if not PREDICTIONS_FILE.exists():
+        print(
+            "No live predictions found."
+        )
+
+        return
+
+    predictions = pd.read_csv(
+        PREDICTIONS_FILE
+    )
+
+    games = pd.read_csv(
         FEATURES_FILE
     )
 
-    saved = joblib.load(
-        MODEL_FILE
-    )
+    if predictions.empty:
+        print(
+            "No live predictions found."
+        )
 
-    model = saved[
-        "model"
-    ]
+        return
 
-    features = saved[
-        "features"
-    ]
+    predictions[
+        "game_id"
+    ] = predictions[
+        "game_id"
+    ].astype(str)
 
-    current = data[
-        data["season"] == CURRENT_SEASON
+    games[
+        "game_id"
+    ] = games[
+        "game_id"
+    ].astype(str)
+
+    completed = games[
+        [
+            "game_id",
+            "away_team",
+            "home_team",
+            "away_score",
+            "home_score",
+            "home_win"
+        ]
     ].copy()
 
-    current = current.sort_values(
+    tracked = predictions.merge(
+        completed,
+        on="game_id",
+        how="inner",
+        suffixes=(
+            "_logged",
+            "_result"
+        )
+    )
+
+    if tracked.empty:
+        print(
+            "No logged predictions have "
+            "completed games yet."
+        )
+
+        return
+
+    tracked[
+        "actual_winner"
+    ] = tracked.apply(
+        lambda row:
+        row["home_team_result"]
+        if row["home_win"] == 1
+        else row["away_team_result"],
+        axis=1
+    )
+
+    tracked[
+        "correct"
+    ] = (
+        tracked["predicted_winner"]
+        == tracked["actual_winner"]
+    )
+
+    tracked = tracked.sort_values(
         [
-            "date",
+            "game_date",
             "game_id"
         ]
     ).reset_index(
         drop=True
     )
 
-    if current.empty:
-        print(
-            "No completed 2027 NHL games found."
-        )
-
-        return
-
-    probabilities = model.predict_proba(
-        current[features]
-    )[:, 1]
-
-    current[
-        "home_win_probability"
-    ] = probabilities
-
-    current[
-        "predicted_home_win"
-    ] = (
-        probabilities >= 0.5
-    ).astype(int)
-
-    current[
-        "predicted_winner"
-    ] = current.apply(
-        lambda row:
-        row["home_team"]
-        if row["predicted_home_win"] == 1
-        else row["away_team"],
-        axis=1
-    )
-
-    current[
-        "actual_winner"
-    ] = current.apply(
-        lambda row:
-        row["home_team"]
-        if row["home_win"] == 1
-        else row["away_team"],
-        axis=1
-    )
-
-    current[
-        "correct"
-    ] = (
-        current["predicted_home_win"]
-        == current["home_win"]
-    )
-
     print()
     print(
-        "NHL 2026-27 Current Season Tracker"
+        "NHL Live Prediction Tracker"
     )
 
     print(
-        "=================================="
+        "==========================="
     )
 
     correct = 0
 
-    for index, row in current.iterrows():
+    for index, row in tracked.iterrows():
         if row["correct"]:
             correct += 1
 
@@ -113,21 +122,12 @@ def main():
             correct / total
         )
 
-        home_probability = (
-            row["home_win_probability"]
-            * 100
-        )
-
-        away_probability = (
-            100
-            - home_probability
-        )
-
         predicted_probability = (
-            home_probability
-            if row["predicted_home_win"] == 1
-            else away_probability
-        )
+            row["home_probability"]
+            if row["predicted_winner"]
+            == row["home_team_logged"]
+            else row["away_probability"]
+        ) * 100
 
         result = (
             "CORRECT"
@@ -137,8 +137,8 @@ def main():
 
         print()
         print(
-            f"{row['away_team']} "
-            f"@ {row['home_team']}"
+            f"{row['away_team_logged']} "
+            f"@ {row['home_team_logged']}"
         )
 
         print(
@@ -169,11 +169,11 @@ def main():
         )
 
     total_games = len(
-        current
+        tracked
     )
 
     total_correct = int(
-        current["correct"].sum()
+        tracked["correct"].sum()
     )
 
     total_accuracy = (
