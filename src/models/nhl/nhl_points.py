@@ -7,15 +7,20 @@ from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
 
 
-INPUT_FILE = Path("data/processed/nhl_skater_features.csv")
-MODEL_FILE = Path("models/nhl_points.joblib")
+INPUT_FILE = Path(
+    "data/processed/nhl_skater_features.csv"
+)
+
+MODEL_FILE = Path(
+    "models/nhl_points.joblib"
+)
 
 TRAIN_SEASONS = [
     2016, 2017, 2018, 2019, 2020, 2021,
     2022, 2023, 2024, 2025, 2026
 ]
 
-MIN_PRIOR_GAMES = 5
+MIN_PRIOR_GAMES = 0
 
 FEATURES = [
     "home",
@@ -65,15 +70,27 @@ FEATURES = [
 
 
 def main():
-    data = pd.read_csv(INPUT_FILE)
+    data = pd.read_csv(
+        INPUT_FILE
+    )
 
     train = data[
-        data["season"].isin(TRAIN_SEASONS)
-        & (data["player_games_played"] >= MIN_PRIOR_GAMES)
+        data["season"].isin(
+            TRAIN_SEASONS
+        )
+        & (
+            data["player_games_played"]
+            >= MIN_PRIOR_GAMES
+        )
     ].copy()
 
     model = Pipeline([
-        ("imputer", SimpleImputer(strategy="median")),
+        (
+            "imputer",
+            SimpleImputer(
+                strategy="median"
+            )
+        ),
         (
             "model",
             RandomForestRegressor(
@@ -107,11 +124,33 @@ def main():
         MODEL_FILE
     )
 
-    print("NHL Points Production Model")
-    print("===========================")
-    print(f"Training rows: {len(train)}")
-    print(f"Features: {len(FEATURES)}")
-    print(f"Saved: {MODEL_FILE}")
+    print(
+        "NHL Points Production Model"
+    )
+
+    print(
+        "==========================="
+    )
+
+    print(
+        f"Training rows: "
+        f"{len(train)}"
+    )
+
+    print(
+        f"Features: "
+        f"{len(FEATURES)}"
+    )
+
+    print(
+        f"Minimum prior games: "
+        f"{MIN_PRIOR_GAMES}"
+    )
+
+    print(
+        f"Saved: "
+        f"{MODEL_FILE}"
+    )
 
 
 if __name__ == "__main__":
