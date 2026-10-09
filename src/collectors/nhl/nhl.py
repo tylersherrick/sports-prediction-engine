@@ -11,15 +11,20 @@ SUMMARY_URL = "https://site.api.espn.com/apis/site/v2/sports/hockey/nhl/summary"
 
 BATCH_SIZE = 5
 
-SEASON = 2027
-
-START_DATE = date(
-    2026,
-    9,
-    29
-)
-
-END_DATE = date.today()
+SEASONS = {
+    2016: (date(2015, 10, 7), date(2016, 6, 12)),
+    2017: (date(2016, 10, 12), date(2017, 6, 11)),
+    2018: (date(2017, 10, 4), date(2018, 6, 7)),
+    2019: (date(2018, 10, 3), date(2019, 6, 12)),
+    2020: (date(2019, 10, 2), date(2020, 9, 28)),
+    2021: (date(2021, 1, 13), date(2021, 7, 7)),
+    2022: (date(2021, 10, 12), date(2022, 6, 26)),
+    2023: (date(2022, 10, 7), date(2023, 6, 13)),
+    2024: (date(2023, 10, 10), date(2024, 6, 24)),
+    2025: (date(2024, 10, 4), date(2025, 6, 17)),
+    2026: (date(2025, 10, 7), date(2026, 6, 30)),
+    2027: (date(2026, 9, 29), date.today()),
+}
 
 
 def get_json(url, params):
@@ -39,9 +44,7 @@ def get_json(url, params):
             if attempt == 2:
                 raise error
 
-            print(
-                "Request failed. Retrying..."
-            )
+            print("Request failed. Retrying...")
 
             time.sleep(2)
 
@@ -50,9 +53,7 @@ def get_games(game_date):
     return get_json(
         SCOREBOARD_URL,
         {
-            "dates": game_date.strftime(
-                "%Y%m%d"
-            ),
+            "dates": game_date.strftime("%Y%m%d"),
             "limit": 100
         }
     )
@@ -76,47 +77,30 @@ def is_completed(game):
     )
 
 
-def save_game(game):
+def save_game(game, season):
     game_id = game["id"]
 
-    season_path = (
-        f"data/raw/nhl/{SEASON}"
-    )
+    season_path = f"data/raw/nhl/{season}"
 
-    game_path = (
-        f"{season_path}/"
-        f"{game_id}.json"
-    )
-
-    details_path = (
-        f"{season_path}/"
-        f"{game_id}_details.json"
-    )
+    game_path = f"{season_path}/{game_id}.json"
+    details_path = f"{season_path}/{game_id}_details.json"
 
     if (
         os.path.exists(game_path)
         and os.path.exists(details_path)
     ):
-        return (
-            f"Already saved "
-            f"{game['name']}"
-        )
+        return f"Already saved {game['name']}"
 
-    details = get_game_details(
-        game_id
-    )
+    details = get_game_details(game_id)
 
     boxscore = details.get(
         "boxscore",
         {}
     )
 
-    if not boxscore.get(
-        "players"
-    ):
+    if not boxscore.get("players"):
         raise RuntimeError(
-            f"No player boxscore "
-            f"for {game_id}"
+            f"No player boxscore for {game_id}"
         )
 
     with open(
@@ -139,9 +123,7 @@ def save_game(game):
             indent=2
         )
 
-    return (
-        f"Saved {game['name']}"
-    )
+    return f"Saved {game['name']}"
 
 
 def get_dates(
@@ -153,15 +135,15 @@ def get_dates(
     while current_date <= end_date:
         yield current_date
 
-        current_date += timedelta(
-            days=1
-        )
+        current_date += timedelta(days=1)
 
 
-def collect_current_season():
-    season_path = (
-        f"data/raw/nhl/{SEASON}"
-    )
+def collect_season(
+    season,
+    start_date,
+    end_date
+):
+    season_path = f"data/raw/nhl/{season}"
 
     os.makedirs(
         season_path,
@@ -170,21 +152,18 @@ def collect_current_season():
 
     total_games = 0
     seen_games = set()
-    start_time = time.time()
 
+    print()
     print(
-        f"\nCollecting NHL "
-        f"2026-2027 completed games..."
+        f"Collecting NHL season {season}..."
     )
 
     for game_date in get_dates(
-        START_DATE,
-        END_DATE
+        start_date,
+        end_date
     ):
         try:
-            data = get_games(
-                game_date
-            )
+            data = get_games(game_date)
 
         except Exception as error:
             print(
@@ -211,21 +190,15 @@ def collect_current_season():
             if season_type != 2:
                 continue
 
-            if not is_completed(
-                game
-            ):
+            if not is_completed(game):
                 continue
 
             if game_id in seen_games:
                 continue
 
-            seen_games.add(
-                game_id
-            )
+            seen_games.add(game_id)
 
-            games.append(
-                game
-            )
+            games.append(game)
 
         if not games:
             continue
@@ -250,7 +223,8 @@ def collect_current_season():
                 futures = [
                     executor.submit(
                         save_game,
-                        game
+                        game,
+                        season
                     )
                     for game in batch
                 ]
@@ -268,24 +242,14 @@ def collect_current_season():
                             f"ERROR: {error}"
                         )
 
-        total_games += len(
-            games
-        )
-
-    elapsed = (
-        time.time()
-        - start_time
-    )
-
-    print()
-    print(
-        f"Done. Found "
-        f"{total_games} completed games."
-    )
+        total_games += len(games)
 
     print(
-        f"Time: {elapsed:.1f} seconds"
+        f"Season {season}: "
+        f"{total_games} completed games found."
     )
+
+    return total_games
 
 
 def main():
@@ -294,7 +258,24 @@ def main():
         exist_ok=True
     )
 
-    collect_current_season()
+    start_time = time.time()
+    total_games = 0
+
+    for season, dates in SEASONS.items():
+        start_date, end_date = dates
+
+        total_games += collect_season(
+            season,
+            start_date,
+            end_date
+        )
+
+    elapsed = time.time() - start_time
+
+    print()
+    print("NHL collection complete.")
+    print(f"Total games found: {total_games}")
+    print(f"Time: {elapsed:.1f} seconds")
 
 
 if __name__ == "__main__":
