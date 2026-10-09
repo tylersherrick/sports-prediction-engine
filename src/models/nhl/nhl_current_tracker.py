@@ -92,6 +92,50 @@ def main():
         == tracked["actual_winner"]
     )
 
+    tracked[
+        "actual_home_margin"
+    ] = (
+        tracked["home_score"]
+        - tracked["away_score"]
+    )
+
+    tracked[
+        "actual_total"
+    ] = (
+        tracked["home_score"]
+        + tracked["away_score"]
+    )
+
+    if (
+        "predicted_home_margin"
+        in tracked.columns
+    ):
+        tracked[
+            "puck_line_error"
+        ] = (
+            tracked[
+                "predicted_home_margin"
+            ]
+            - tracked[
+                "actual_home_margin"
+            ]
+        ).abs()
+
+    if (
+        "predicted_total"
+        in tracked.columns
+    ):
+        tracked[
+            "total_error"
+        ] = (
+            tracked[
+                "predicted_total"
+            ]
+            - tracked[
+                "actual_total"
+            ]
+        ).abs()
+
     tracked = tracked.sort_values(
         [
             "game_date",
@@ -148,22 +192,70 @@ def main():
         )
 
         print(
-            f"Prediction: "
+            f"Winner: "
             f"{row['predicted_winner']} "
             f"({predicted_probability:.1f}%)"
         )
 
         print(
-            f"Actual: "
+            f"Actual winner: "
             f"{row['actual_winner']}"
         )
 
         print(
-            f"Result: {result}"
+            f"Winner result: {result}"
         )
 
+        if (
+            "predicted_home_margin"
+            in tracked.columns
+            and pd.notna(
+                row.get(
+                    "predicted_home_margin"
+                )
+            )
+        ):
+            print(
+                f"Predicted home margin: "
+                f"{row['predicted_home_margin']:+.2f}"
+            )
+
+            print(
+                f"Actual home margin: "
+                f"{row['actual_home_margin']:+.0f}"
+            )
+
+            print(
+                f"Margin error: "
+                f"{row['puck_line_error']:.2f}"
+            )
+
+        if (
+            "predicted_total"
+            in tracked.columns
+            and pd.notna(
+                row.get(
+                    "predicted_total"
+                )
+            )
+        ):
+            print(
+                f"Predicted total: "
+                f"{row['predicted_total']:.2f}"
+            )
+
+            print(
+                f"Actual total: "
+                f"{row['actual_total']:.0f}"
+            )
+
+            print(
+                f"Total error: "
+                f"{row['total_error']:.2f}"
+            )
+
         print(
-            f"Running record: "
+            f"Running winner record: "
             f"{correct}-{total - correct} "
             f"({accuracy:.1%})"
         )
@@ -191,19 +283,65 @@ def main():
     )
 
     print(
-        f"Games: {total_games}"
+        f"Winner games: {total_games}"
     )
 
     print(
-        f"Record: "
+        f"Winner record: "
         f"{total_correct}-"
         f"{total_games - total_correct}"
     )
 
     print(
-        f"Accuracy: "
+        f"Winner accuracy: "
         f"{total_accuracy:.1%}"
     )
+
+    if (
+        "puck_line_error"
+        in tracked.columns
+    ):
+        puck_line_games = tracked[
+            "puck_line_error"
+        ].notna().sum()
+
+        if puck_line_games:
+            puck_line_mae = tracked[
+                "puck_line_error"
+            ].mean()
+
+            print(
+                f"Puck-line games: "
+                f"{puck_line_games}"
+            )
+
+            print(
+                f"Puck-line MAE: "
+                f"{puck_line_mae:.3f}"
+            )
+
+    if (
+        "total_error"
+        in tracked.columns
+    ):
+        total_model_games = tracked[
+            "total_error"
+        ].notna().sum()
+
+        if total_model_games:
+            total_mae = tracked[
+                "total_error"
+            ].mean()
+
+            print(
+                f"Total games: "
+                f"{total_model_games}"
+            )
+
+            print(
+                f"Total MAE: "
+                f"{total_mae:.3f}"
+            )
 
 
 if __name__ == "__main__":
