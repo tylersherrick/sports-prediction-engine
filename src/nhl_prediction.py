@@ -338,14 +338,6 @@ def get_skater_predictions(
         )
 
         for _, player in players.iterrows():
-            if (
-                player.get(
-                    "player_games_played",
-                    0
-                ) < 5
-            ):
-                continue
-
             X_sog = build_player_features(
                 player,
                 sog_features,
@@ -460,14 +452,6 @@ def get_goalie_predictions(
         )
 
         for _, goalie in goalies.iterrows():
-            if (
-                goalie.get(
-                    "goalie_games_played",
-                    0
-                ) < 5
-            ):
-                continue
-
             X = build_player_features(
                 goalie,
                 saves_features,
