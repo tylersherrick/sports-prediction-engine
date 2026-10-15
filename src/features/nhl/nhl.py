@@ -1,5 +1,4 @@
 from pathlib import Path
-
 import numpy as np
 import pandas as pd
 
@@ -27,10 +26,13 @@ def build_team_games(games):
         "opponent_team_id": games["away_team_id"],
         "opponent": games["away_team"],
         "home": 1,
+        "went_overtime": games["went_overtime"],
         "goals_for": games["home_score"],
         "goals_against": games["away_score"],
         "shots_for": games["home_shotsTotal"],
         "shots_against": games["away_shotsTotal"],
+        "blocks_for": games["home_blockedShots"],
+        "blocks_against": games["away_blockedShots"],
         "power_play_goals": games["home_powerPlayGoals"],
         "power_play_opportunities": games["home_powerPlayOpportunities"],
         "penalty_minutes": games["home_penaltyMinutes"],
@@ -46,10 +48,13 @@ def build_team_games(games):
         "opponent_team_id": games["home_team_id"],
         "opponent": games["home_team"],
         "home": 0,
+        "went_overtime": games["went_overtime"],
         "goals_for": games["away_score"],
         "goals_against": games["home_score"],
         "shots_for": games["away_shotsTotal"],
         "shots_against": games["home_shotsTotal"],
+        "blocks_for": games["away_blockedShots"],
+        "blocks_against": games["home_blockedShots"],
         "power_play_goals": games["away_powerPlayGoals"],
         "power_play_opportunities": games["away_powerPlayOpportunities"],
         "penalty_minutes": games["away_penaltyMinutes"],
@@ -78,6 +83,31 @@ def build_team_games(games):
     team_games["shot_diff"] = (
         team_games["shots_for"]
         - team_games["shots_against"]
+    )
+
+    team_games["shot_attempts_for"] = (
+        team_games["shots_for"]
+        + team_games["blocks_against"]
+    )
+
+    team_games["shot_attempts_against"] = (
+        team_games["shots_against"]
+        + team_games["blocks_for"]
+    )
+
+    team_games["shot_attempt_diff"] = (
+        team_games["shot_attempts_for"]
+        - team_games["shot_attempts_against"]
+    )
+
+    team_games["shot_through_pct"] = safe_divide(
+        team_games["shots_for"],
+        team_games["shot_attempts_for"]
+    )
+
+    team_games["opponent_shot_through_pct"] = safe_divide(
+        team_games["shots_against"],
+        team_games["shot_attempts_against"]
     )
 
     team_games["shooting_pct"] = safe_divide(
@@ -251,6 +281,13 @@ def add_team_features(team_games):
         "shots_for",
         "shots_against",
         "shot_diff",
+        "blocks_for",
+        "blocks_against",
+        "shot_attempts_for",
+        "shot_attempts_against",
+        "shot_attempt_diff",
+        "shot_through_pct",
+        "opponent_shot_through_pct",
         "shooting_pct",
         "save_pct",
         "power_play_pct",
@@ -303,6 +340,44 @@ def add_team_features(team_games):
             )
         )
 
+    for window in [5, 10]:
+        team_games[
+            f"ot_rate_last_{window}"
+        ] = (
+            team_games
+            .groupby("team_id")[
+                "went_overtime"
+            ]
+            .transform(
+                lambda values:
+                values
+                .shift(1)
+                .rolling(
+                    window,
+                    min_periods=1
+                )
+                .mean()
+            )
+        )
+
+    team_games[
+        "ot_rate_season"
+    ] = (
+        team_games
+        .groupby(
+            ["team_id", "season"]
+        )["went_overtime"]
+        .transform(
+            lambda values:
+            values
+            .shift(1)
+            .expanding(
+                min_periods=1
+            )
+            .mean()
+        )
+    )
+
     venue_stats = [
         "goals_for",
         "goals_against",
@@ -310,6 +385,13 @@ def add_team_features(team_games):
         "shots_for",
         "shots_against",
         "shot_diff",
+        "blocks_for",
+        "blocks_against",
+        "shot_attempts_for",
+        "shot_attempts_against",
+        "shot_attempt_diff",
+        "shot_through_pct",
+        "opponent_shot_through_pct",
         "shooting_pct",
         "save_pct",
         "power_play_pct",
@@ -345,7 +427,9 @@ def add_team_features(team_games):
         .shift(1)
     )
 
-    team_games["days_since_last_game"] = (
+    team_games[
+        "days_since_last_game"
+    ] = (
         team_games["date"]
         - previous_date
     ).dt.total_seconds() / 86400
@@ -387,16 +471,24 @@ def get_feature_columns(team_games):
         "opponent_team_id",
         "opponent",
         "home",
+        "went_overtime",
         "goals_for",
         "goals_against",
         "shots_for",
         "shots_against",
+        "blocks_for",
+        "blocks_against",
+        "shot_attempts_for",
+        "shot_attempts_against",
         "power_play_goals",
         "power_play_opportunities",
         "penalty_minutes",
         "win",
         "goal_diff",
         "shot_diff",
+        "shot_attempt_diff",
+        "shot_through_pct",
+        "opponent_shot_through_pct",
         "shooting_pct",
         "save_pct",
         "power_play_pct",
@@ -481,7 +573,8 @@ def build_game_features(
             "away_score",
             "total_goals",
             "home_goal_diff",
-            "home_win"
+            "home_win",
+            "went_overtime"
         ]
     ].copy()
 
@@ -506,6 +599,13 @@ def build_game_features(
         "shots_for",
         "shots_against",
         "shot_diff",
+        "blocks_for",
+        "blocks_against",
+        "shot_attempts_for",
+        "shot_attempts_against",
+        "shot_attempt_diff",
+        "shot_through_pct",
+        "opponent_shot_through_pct",
         "shooting_pct",
         "save_pct",
         "power_play_pct",
@@ -523,6 +623,12 @@ def build_game_features(
             f"{stat}_season"
         )
 
+    matchup_stats.extend([
+        "ot_rate_last_5",
+        "ot_rate_last_10",
+        "ot_rate_season"
+    ])
+
     venue_matchup_stats = [
         "goals_for_venue_season",
         "goals_against_venue_season",
@@ -530,6 +636,13 @@ def build_game_features(
         "shots_for_venue_season",
         "shots_against_venue_season",
         "shot_diff_venue_season",
+        "blocks_for_venue_season",
+        "blocks_against_venue_season",
+        "shot_attempts_for_venue_season",
+        "shot_attempts_against_venue_season",
+        "shot_attempt_diff_venue_season",
+        "shot_through_pct_venue_season",
+        "opponent_shot_through_pct_venue_season",
         "shooting_pct_venue_season",
         "save_pct_venue_season",
         "power_play_pct_venue_season",
@@ -658,25 +771,21 @@ def main():
     )
 
     print(
-        "\nSchedule feature sample:"
+        "\nOT-rate feature sample:"
     )
 
-    schedule_columns = [
-        "home_back_to_back",
-        "away_back_to_back",
-        "home_three_in_four",
-        "away_three_in_four",
-        "home_four_in_six",
-        "away_four_in_six",
-        "home_road_trip_game",
-        "away_road_trip_game",
-        "home_home_after_road_trip",
-        "away_home_after_road_trip"
+    ot_columns = [
+        "home_ot_rate_last_5",
+        "away_ot_rate_last_5",
+        "home_ot_rate_last_10",
+        "away_ot_rate_last_10",
+        "home_ot_rate_season",
+        "away_ot_rate_season"
     ]
 
     print(
         features[
-            schedule_columns
+            ot_columns
         ]
         .tail(10)
         .to_string(index=False)

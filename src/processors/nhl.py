@@ -1,10 +1,13 @@
 import json
+
 from pathlib import Path
 
 import pandas as pd
 
+
 RAW_DIR = Path("data/raw/nhl")
 PROCESSED_DIR = Path("data/processed")
+
 
 SEASONS = [
     "2016",
@@ -20,6 +23,7 @@ SEASONS = [
     "2026",
     "2027"
 ]
+
 
 SKATER_STAT_NAMES = {
     "BS": "blocked_shots",
@@ -43,6 +47,7 @@ SKATER_STAT_NAMES = {
     "PN": "penalties",
     "PIM": "penalty_minutes"
 }
+
 
 GOALIE_STAT_NAMES = {
     "GA": "goals_against",
@@ -300,6 +305,20 @@ def process_game(
         else None
     )
 
+    final_period = (
+        game
+        .get("status", {})
+        .get("period", 0)
+    )
+
+    went_overtime = int(
+        isinstance(
+            final_period,
+            (int, float)
+        )
+        and final_period > 3
+    )
+
     row = {
         "game_id": str(
             game.get("id")
@@ -314,6 +333,7 @@ def process_game(
             "name"
         ),
         "venue": venue,
+        "went_overtime": went_overtime,
         "home_team_id": home_info[
             "team_id"
         ],
