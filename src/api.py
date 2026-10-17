@@ -5,6 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
 from src.nfl_prediction import get_nfl_prediction
 from src.nhl_prediction import get_nhl_prediction
+from src.collectors.nhl_odds import evaluate_game_lines
 
 app = FastAPI(title="Sports Prediction Engine")
 
@@ -34,7 +35,12 @@ def nfl_prediction(game_id: str):
 @app.get("/nhl/{game_id}")
 def nhl_prediction(game_id: str):
     try:
-        return get_nhl_prediction(game_id)
+        prediction = get_nhl_prediction(game_id)
+        prediction["market_comparison"] = evaluate_game_lines(
+            prediction,
+            prediction.get("market_odds"),
+        )
+        return prediction
     except Exception as error:
         raise HTTPException(status_code=400, detail=str(error))
 

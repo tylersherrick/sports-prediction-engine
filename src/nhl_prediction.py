@@ -2,6 +2,12 @@ import joblib
 import pandas as pd
 import requests
 
+from src.collectors.nhl_odds import (
+    get_nhl_odds,
+    implied_probability,
+    expected_value,
+)
+
 
 FEATURES_FILE = "models/nhl_team_state.csv"
 SKATER_FEATURES_FILE = "models/nhl_skater_state.csv"
@@ -711,6 +717,33 @@ def get_nhl_prediction(game_id):
         away_team_id
     )
 
+    market_odds = get_nhl_odds(game_id)
+    moneyline_value = []
+
+    if market_odds:
+        for team, probability, odds in [
+            (home_team, home_probability, market_odds["moneyline"]["home"]),
+            (away_team, away_probability, market_odds["moneyline"]["away"]),
+        ]:
+            if odds is None:
+                continue
+
+            breakeven = implied_probability(odds)
+
+            moneyline_value.append({
+                "team": team,
+                "model_probability": round(probability, 3),
+                "market_odds": odds,
+                "breakeven_probability": round(breakeven, 3),
+                "edge": round(probability - breakeven, 3),
+                "expected_value": round(expected_value(probability, odds), 3),
+            })
+
+        moneyline_value.sort(
+            key=lambda item: item["expected_value"],
+            reverse=True,
+        )
+
     return {
         "game_id": str(
             game_id
@@ -724,5 +757,7 @@ def get_nhl_prediction(game_id):
         "puck_line": puck_line_result,
         "total": total_result,
         "skaters": skaters,
-        "goalies": goalies
+        "goalies": goalies,
+        "market_odds": market_odds,
+        "moneyline_value": moneyline_value,
     }
