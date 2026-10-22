@@ -8,6 +8,11 @@ from src.collectors.nhl_odds import (
     expected_value,
 )
 
+from src.collectors.nhl.kalshi_saves import (
+    get_saves_markets,
+    find_goalie_market,
+)
+
 
 FEATURES_FILE = "models/nhl_team_state.csv"
 SKATER_FEATURES_FILE = "models/nhl_skater_state.csv"
@@ -437,6 +442,19 @@ def get_goalie_predictions(
 ):
     predictions = []
 
+    try:
+        kalshi_markets = (
+            get_saves_markets()
+        )
+
+    except Exception as error:
+        print(
+            "Kalshi saves markets "
+            f"unavailable: {error}"
+        )
+
+        kalshi_markets = []
+
     teams = [
         (
             home_team_id,
@@ -470,18 +488,87 @@ def get_goalie_predictions(
                 )[0]
             )
 
-            predictions.append({
+            player_name = goalie["player"]
+
+            market = find_goalie_market(
+                player_name,
+                kalshi_markets
+            )
+
+            prediction = {
                 "player_id": str(
                     goalie["player_id"]
                 ),
-                "player": goalie["player"],
+                "player": player_name,
                 "team": goalie["team"],
                 "home": home,
                 "saves": round(
                     predicted_saves,
                     2
+                ),
+                "kalshi": None
+            }
+
+            if market:
+                threshold = float(
+                    market["threshold"]
                 )
-            })
+
+                comparison_line = (
+                    threshold - 0.5
+                )
+
+                edge = (
+                    predicted_saves
+                    - comparison_line
+                )
+
+                if edge >= 0:
+                    pick = "YES"
+                    price = market[
+                        "yes_ask"
+                    ]
+
+                else:
+                    pick = "NO"
+                    price = market[
+                        "no_ask"
+                    ]
+
+                prediction["kalshi"] = {
+                    "ticker": market[
+                        "ticker"
+                    ],
+                    "threshold": threshold,
+                    "comparison_line": (
+                        comparison_line
+                    ),
+                    "pick": pick,
+                    "edge": round(
+                        edge,
+                        2
+                    ),
+                    "price": price,
+                    "yes_bid": market[
+                        "yes_bid"
+                    ],
+                    "yes_ask": market[
+                        "yes_ask"
+                    ],
+                    "no_bid": market[
+                        "no_bid"
+                    ],
+                    "no_ask": market[
+                        "no_ask"
+                    ],
+                    "captured_at": market[
+                        "captured_at"
+                    ]
+                }
+
+            predictions.append(
+                prediction
+            )
 
     predictions.sort(
         key=lambda item: item["saves"],
@@ -717,30 +804,73 @@ def get_nhl_prediction(game_id):
         away_team_id
     )
 
-    market_odds = get_nhl_odds(game_id)
+    market_odds = get_nhl_odds(
+        game_id
+    )
+
     moneyline_value = []
 
     if market_odds:
-        for team, probability, odds in [
-            (home_team, home_probability, market_odds["moneyline"]["home"]),
-            (away_team, away_probability, market_odds["moneyline"]["away"]),
+        for (
+            team,
+            probability,
+            odds
+        ) in [
+            (
+                home_team,
+                home_probability,
+                market_odds[
+                    "moneyline"
+                ]["home"]
+            ),
+            (
+                away_team,
+                away_probability,
+                market_odds[
+                    "moneyline"
+                ]["away"]
+            ),
         ]:
             if odds is None:
                 continue
 
-            breakeven = implied_probability(odds)
+            breakeven = (
+                implied_probability(
+                    odds
+                )
+            )
 
             moneyline_value.append({
                 "team": team,
-                "model_probability": round(probability, 3),
+                "model_probability": round(
+                    probability,
+                    3
+                ),
                 "market_odds": odds,
-                "breakeven_probability": round(breakeven, 3),
-                "edge": round(probability - breakeven, 3),
-                "expected_value": round(expected_value(probability, odds), 3),
+                "breakeven_probability": round(
+                    breakeven,
+                    3
+                ),
+                "edge": round(
+                    probability
+                    - breakeven,
+                    3
+                ),
+                "expected_value": round(
+                    expected_value(
+                        probability,
+                        odds
+                    ),
+                    3
+                ),
             })
 
         moneyline_value.sort(
-            key=lambda item: item["expected_value"],
+            key=lambda item: (
+                item[
+                    "expected_value"
+                ]
+            ),
             reverse=True,
         )
 
@@ -759,5 +889,7 @@ def get_nhl_prediction(game_id):
         "skaters": skaters,
         "goalies": goalies,
         "market_odds": market_odds,
-        "moneyline_value": moneyline_value,
+        "moneyline_value": (
+            moneyline_value
+        ),
     }
