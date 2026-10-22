@@ -1,9 +1,13 @@
+import re
+
 import numpy as np
 import pandas as pd
 
 
 GOALIE_FILE = "data/processed/nhl_goalie_features.csv"
 TEAM_FILE = "data/processed/nhl_features.csv"
+KALSHI_FILE = "data/processed/nhl_kalshi_saves_history.csv"
+
 
 MIN_PRIOR_GAMES = 5
 TARGET_TOI = 3000
@@ -273,8 +277,10 @@ def run_backtest(data):
 
             row = {
                 "game_id": current["game_id"],
+                "date": current["date"],
                 "season": current["season"],
                 "player_id": current["player_id"],
+                "player": current["player"],
                 "actual_shots": current[
                     "shots_against"
                 ],
@@ -416,6 +422,426 @@ def evaluate(
     )
 
 
+def normalize_name(name):
+    return re.sub(
+        r"[^a-z0-9]",
+        "",
+        str(name).lower()
+    )
+
+
+def prepare_kalshi_history():
+    kalshi = pd.read_csv(
+        KALSHI_FILE
+    )
+
+    kalshi["close_time"] = pd.to_datetime(
+        kalshi["close_time"],
+        errors="coerce",
+        utc=True
+    )
+
+    kalshi["market_date"] = (
+        kalshi["close_time"]
+        .dt.normalize()
+    )
+
+    kalshi["player_key"] = (
+        kalshi["player"]
+        .apply(normalize_name)
+    )
+
+    kalshi["threshold"] = pd.to_numeric(
+        kalshi["threshold"],
+        errors="coerce"
+    )
+
+    kalshi["comparison_line"] = (
+        kalshi["threshold"] - 0.5
+    )
+
+    kalshi["result"] = (
+        kalshi["result"]
+        .astype(str)
+        .str.lower()
+    )
+
+    kalshi = kalshi.dropna(
+        subset=[
+            "market_date",
+            "player_key",
+            "threshold",
+            "comparison_line"
+        ]
+    ).copy()
+
+    kalshi = kalshi[
+        kalshi["result"].isin(
+            [
+                "yes",
+                "no"
+            ]
+        )
+    ].copy()
+
+    return kalshi
+
+
+def select_representative_markets(
+    kalshi
+):
+    markets = kalshi[
+        [
+            "ticker",
+            "player",
+            "player_key",
+            "market_date",
+            "threshold",
+            "comparison_line",
+            "result"
+        ]
+    ].copy()
+
+    market_counts = (
+        markets.groupby(
+            [
+                "player_key",
+                "market_date"
+            ]
+        )
+        .size()
+        .rename("market_count")
+        .reset_index()
+    )
+
+    markets = markets.merge(
+        market_counts,
+        on=[
+            "player_key",
+            "market_date"
+        ],
+        how="left"
+    )
+
+    markets["threshold_rank"] = (
+        markets.groupby(
+            [
+                "player_key",
+                "market_date"
+            ]
+        )["threshold"]
+        .rank(
+            method="first",
+            pct=True
+        )
+    )
+
+    markets[
+        "distance_from_middle"
+    ] = (
+        markets["threshold_rank"]
+        - 0.5
+    ).abs()
+
+    markets = (
+        markets.sort_values(
+            [
+                "player_key",
+                "market_date",
+                "distance_from_middle",
+                "threshold"
+            ]
+        )
+        .drop_duplicates(
+            subset=[
+                "player_key",
+                "market_date"
+            ],
+            keep="first"
+        )
+        .drop(
+            columns=[
+                "market_count",
+                "threshold_rank",
+                "distance_from_middle"
+            ]
+        )
+        .reset_index(
+            drop=True
+        )
+    )
+
+    return markets
+
+
+def evaluate_real_betting(
+    results,
+    kalshi,
+    title,
+    window=15
+):
+    graded = results.copy()
+
+    graded["game_date"] = pd.to_datetime(
+        graded["date"],
+        errors="coerce",
+        utc=True
+    ).dt.normalize()
+
+    graded["player_key"] = (
+        graded["player"]
+        .apply(normalize_name)
+    )
+
+    markets = (
+        select_representative_markets(
+            kalshi
+        )
+    )
+
+    graded = graded.merge(
+        markets,
+        left_on=[
+            "player_key",
+            "game_date"
+        ],
+        right_on=[
+            "player_key",
+            "market_date"
+        ],
+        how="inner",
+        suffixes=(
+            "_model",
+            "_market"
+        )
+    )
+
+    graded["projection"] = graded[
+        f"saves_{window}"
+    ]
+
+    graded["edge"] = (
+        graded["projection"]
+        - graded["comparison_line"]
+    )
+
+    graded["pick"] = np.where(
+        graded["edge"] >= 0,
+        "yes",
+        "no"
+    )
+
+    graded["correct"] = (
+        graded["pick"]
+        == graded["result"]
+    )
+
+    print()
+    print(title)
+    print("=" * 100)
+
+    print(
+        "Market: Real settled Kalshi "
+        "KXNHLSAVE goalie saves lines"
+    )
+
+    print(
+        f"Projection: Venue Last {window}"
+    )
+
+    print(
+        "Edge: projection minus the "
+        "market's half-save boundary"
+    )
+
+    print(
+        "Selection: one representative "
+        "Kalshi threshold per goalie/game"
+    )
+
+    print()
+
+    print(
+        f"Kalshi markets available: "
+        f"{len(kalshi):,}"
+    )
+
+    print(
+        f"Matched model predictions: "
+        f"{len(graded):,}"
+    )
+
+    if graded.empty:
+        print()
+        print(
+            "No Kalshi markets matched "
+            "the historical model rows."
+        )
+
+        return graded
+
+    wins = int(
+        graded["correct"].sum()
+    )
+
+    losses = int(
+        len(graded) - wins
+    )
+
+    hit_rate = (
+        wins / len(graded)
+    )
+
+    print()
+
+    print(
+        f"Record:       "
+        f"{wins}-{losses}"
+    )
+
+    print(
+        f"Hit Rate:     "
+        f"{hit_rate:.1%}"
+    )
+
+    print(
+        f"Predictions:  "
+        f"{len(graded):,}"
+    )
+
+    for pick in [
+        "yes",
+        "no"
+    ]:
+        subset = graded[
+            graded["pick"] == pick
+        ]
+
+        if subset.empty:
+            continue
+
+        pick_wins = int(
+            subset["correct"].sum()
+        )
+
+        pick_losses = int(
+            len(subset) - pick_wins
+        )
+
+        pick_rate = (
+            pick_wins / len(subset)
+        )
+
+        print(
+            f"{pick.upper():<6}:       "
+            f"{pick_wins}-"
+            f"{pick_losses} | "
+            f"{pick_rate:.1%}"
+        )
+
+    print()
+    print("BY MODEL EDGE")
+    print("-" * 100)
+
+    edge_bins = [
+        0.0,
+        1.0,
+        2.0,
+        3.0,
+        np.inf
+    ]
+
+    edge_labels = [
+        "0.00-0.99",
+        "1.00-1.99",
+        "2.00-2.99",
+        "3.00+"
+    ]
+
+    graded["edge_bucket"] = pd.cut(
+        graded["edge"].abs(),
+        bins=edge_bins,
+        labels=edge_labels,
+        right=False
+    )
+
+    for label in edge_labels:
+        subset = graded[
+            graded["edge_bucket"]
+            == label
+        ]
+
+        if subset.empty:
+            continue
+
+        bucket_wins = int(
+            subset["correct"].sum()
+        )
+
+        bucket_losses = int(
+            len(subset) - bucket_wins
+        )
+
+        bucket_rate = (
+            bucket_wins
+            / len(subset)
+        )
+
+        print(
+            f"{label:<10} "
+            f"{bucket_wins}-"
+            f"{bucket_losses} | "
+            f"{bucket_rate:.1%} | "
+            f"{len(subset):,} picks"
+        )
+
+    print()
+    print("MATCHED MARKETS")
+    print("-" * 100)
+
+    display = graded[
+        [
+            "game_date",
+            "player_model",
+            "threshold",
+            "projection",
+            "edge",
+            "pick",
+            "result",
+            "actual_saves",
+            "correct"
+        ]
+    ].copy()
+
+    display = display.sort_values(
+        [
+            "game_date",
+            "player_model"
+        ]
+    )
+
+    for _, row in display.iterrows():
+        date = row[
+            "game_date"
+        ].strftime(
+            "%Y-%m-%d"
+        )
+
+        print(
+            f"{date} | "
+            f"{row['player_model']} | "
+            f"{row['threshold']:.0f}+ | "
+            f"Proj {row['projection']:.2f} | "
+            f"Edge {row['edge']:+.2f} | "
+            f"Pick {row['pick'].upper()} | "
+            f"Result {row['result'].upper()} | "
+            f"Saves {row['actual_saves']:.0f} | "
+            f"{'WIN' if row['correct'] else 'LOSS'}"
+        )
+
+    return graded
+
+
 def main():
     goalies = pd.read_csv(
         GOALIE_FILE,
@@ -464,8 +890,10 @@ def main():
         columns={
             "home_team_id":
             "opponent_team_id",
+
             "home_shot_attempts_for_last_10":
             "opponent_shot_attempts_for_last_10",
+
             "home_shot_through_pct_last_10":
             "opponent_shot_through_pct_last_10"
         }
@@ -482,8 +910,10 @@ def main():
         columns={
             "away_team_id":
             "opponent_team_id",
+
             "away_shot_attempts_for_last_10":
             "opponent_shot_attempts_for_last_10",
+
             "away_shot_through_pct_last_10":
             "opponent_shot_through_pct_last_10"
         }
@@ -535,7 +965,9 @@ def main():
     ).copy()
 
     goalies = goalies[
-        goalies["shots_against"] > 0
+        goalies[
+            "shots_against"
+        ] > 0
     ].copy()
 
     print()
@@ -544,15 +976,18 @@ def main():
     )
 
     print(
-        "Historical appearances: 50+ minutes"
+        "Historical appearances: "
+        "50+ minutes"
     )
 
     print(
-        "Overall goalie workload: Last 15"
+        "Overall goalie workload: "
+        "Last 15"
     )
 
     print(
-        "Workload blend: 60% same venue / 40% overall"
+        "Workload blend: "
+        "60% same venue / 40% overall"
     )
 
     results = run_backtest(
@@ -569,13 +1004,25 @@ def main():
     ].max()
 
     current = results[
-        results["season"]
-        == latest_season
+        results[
+            "season"
+        ] == latest_season
     ].copy()
 
     evaluate(
         current,
-        f"CURRENT SEASON ({latest_season})"
+        f"CURRENT SEASON "
+        f"({latest_season})"
+    )
+
+    kalshi = (
+        prepare_kalshi_history()
+    )
+
+    evaluate_real_betting(
+        results,
+        kalshi,
+        "REAL KALSHI SAVES BETTING TEST"
     )
 
 
