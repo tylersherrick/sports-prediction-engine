@@ -1,6 +1,7 @@
 import csv
 import json
 import re
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urlencode
@@ -13,6 +14,11 @@ SERIES_TICKER = "KXNHLSAVE"
 OUTPUT_FILE = Path(
     "data/processed/nhl_kalshi_saves_markets.csv"
 )
+
+CACHE_SECONDS = 300
+
+_saves_market_cache = None
+_saves_market_cache_time = 0
 
 
 def get_json(path, params=None):
@@ -29,7 +35,10 @@ def get_json(path, params=None):
         }
     )
 
-    with urlopen(request, timeout=30) as response:
+    with urlopen(
+        request,
+        timeout=30
+    ) as response:
         return json.loads(
             response.read().decode("utf-8")
         )
@@ -55,10 +64,15 @@ def get_markets():
         )
 
         markets.extend(
-            data.get("markets", [])
+            data.get(
+                "markets",
+                []
+            )
         )
 
-        cursor = data.get("cursor")
+        cursor = data.get(
+            "cursor"
+        )
 
         if not cursor:
             break
@@ -79,7 +93,10 @@ def parse_market_title(title):
     if not match:
         return None, None
 
-    player = match.group(1).strip()
+    player = match.group(
+        1
+    ).strip()
+
     threshold = float(
         match.group(2)
     )
@@ -87,7 +104,11 @@ def parse_market_title(title):
     return player, threshold
 
 
-def get_price(market, side, price_type):
+def get_price(
+    market,
+    side,
+    price_type
+):
     legacy_key = (
         f"{side}_{price_type}"
     )
@@ -128,15 +149,21 @@ def market_row(market):
         timezone.utc
     ).isoformat()
 
-    title = market.get("title")
+    title = market.get(
+        "title"
+    )
 
     player, threshold = (
-        parse_market_title(title)
+        parse_market_title(
+            title
+        )
     )
 
     return {
         "captured_at": now,
-        "ticker": market.get("ticker"),
+        "ticker": market.get(
+            "ticker"
+        ),
         "event_ticker": market.get(
             "event_ticker"
         ),
@@ -152,7 +179,9 @@ def market_row(market):
         "no_sub_title": market.get(
             "no_sub_title"
         ),
-        "status": market.get("status"),
+        "status": market.get(
+            "status"
+        ),
         "close_time": market.get(
             "close_time"
         ),
@@ -179,7 +208,9 @@ def market_row(market):
         "last_price": market.get(
             "last_price"
         ),
-        "volume": market.get("volume"),
+        "volume": market.get(
+            "volume"
+        ),
         "open_interest": market.get(
             "open_interest"
         ),
@@ -190,13 +221,37 @@ def market_row(market):
     }
 
 
-def get_saves_markets():
+def get_saves_markets(
+    force_refresh=False
+):
+    global _saves_market_cache
+    global _saves_market_cache_time
+
+    now = time.monotonic()
+
+    cache_valid = (
+        _saves_market_cache
+        is not None
+        and (
+            now
+            - _saves_market_cache_time
+        ) < CACHE_SECONDS
+    )
+
+    if (
+        cache_valid
+        and not force_refresh
+    ):
+        return _saves_market_cache
+
     markets = get_markets()
 
     rows = []
 
     for market in markets:
-        row = market_row(market)
+        row = market_row(
+            market
+        )
 
         if (
             row["player"] is None
@@ -204,7 +259,12 @@ def get_saves_markets():
         ):
             continue
 
-        rows.append(row)
+        rows.append(
+            row
+        )
+
+    _saves_market_cache = rows
+    _saves_market_cache_time = now
 
     return rows
 
@@ -249,6 +309,7 @@ def save_markets(markets):
         print(
             "No open NHL saves markets found."
         )
+
         return
 
     file_exists = OUTPUT_FILE.exists()
@@ -260,16 +321,22 @@ def save_markets(markets):
     ) as file:
         writer = csv.DictWriter(
             file,
-            fieldnames=markets[0].keys()
+            fieldnames=markets[
+                0
+            ].keys()
         )
 
         if not file_exists:
             writer.writeheader()
 
-        writer.writerows(markets)
+        writer.writerows(
+            markets
+        )
 
     print()
-    print("KALSHI NHL SAVES")
+    print(
+        "KALSHI NHL SAVES"
+    )
     print("=" * 60)
 
     print(
@@ -297,7 +364,9 @@ def save_markets(markets):
 
 
 def main():
-    markets = get_saves_markets()
+    markets = get_saves_markets(
+        force_refresh=True
+    )
 
     save_markets(
         markets

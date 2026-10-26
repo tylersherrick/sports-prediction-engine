@@ -326,7 +326,7 @@ def get_skater_predictions(
     home_team_id,
     away_team_id
 ):
-    predictions = []
+    player_rows = []
 
     teams = [
         (
@@ -349,81 +349,121 @@ def get_skater_predictions(
         )
 
         for _, player in players.iterrows():
-            X_sog = build_player_features(
+            player_rows.append((
+                player,
+                home
+            ))
+
+    if not player_rows:
+        return []
+
+    sog_rows = []
+    points_rows = []
+    goals_rows = []
+    assists_rows = []
+
+    for player, home in player_rows:
+        sog_rows.append(
+            build_player_features(
                 player,
                 sog_features,
                 home
-            )
+            ).iloc[0].to_dict()
+        )
 
-            X_points = build_player_features(
+        points_rows.append(
+            build_player_features(
                 player,
                 points_features,
                 home
-            )
+            ).iloc[0].to_dict()
+        )
 
-            X_goals = build_player_features(
+        goals_rows.append(
+            build_player_features(
                 player,
                 goals_features,
                 home
-            )
+            ).iloc[0].to_dict()
+        )
 
-            X_assists = build_player_features(
+        assists_rows.append(
+            build_player_features(
                 player,
                 assists_features,
                 home
-            )
+            ).iloc[0].to_dict()
+        )
 
-            predicted_sog = float(
-                sog_model.predict(
-                    X_sog
-                )[0]
-            )
+    X_sog = pd.DataFrame(
+        sog_rows,
+        columns=sog_features
+    )
 
-            predicted_points = float(
-                points_model.predict(
-                    X_points
-                )[0]
-            )
+    X_points = pd.DataFrame(
+        points_rows,
+        columns=points_features
+    )
 
-            predicted_goals = float(
-                goals_model.predict(
-                    X_goals
-                )[0]
-            )
+    X_goals = pd.DataFrame(
+        goals_rows,
+        columns=goals_features
+    )
 
-            predicted_assists = float(
-                assists_model.predict(
-                    X_assists
-                )[0]
-            )
+    X_assists = pd.DataFrame(
+        assists_rows,
+        columns=assists_features
+    )
 
-            predictions.append({
-                "player_id": str(
-                    player["player_id"]
-                ),
-                "player": player["player"],
-                "team": player["team"],
-                "position": player.get(
-                    "position"
-                ),
-                "home": home,
-                "shots_on_goal": round(
-                    predicted_sog,
-                    2
-                ),
-                "points": round(
-                    predicted_points,
-                    2
-                ),
-                "goals": round(
-                    predicted_goals,
-                    2
-                ),
-                "assists": round(
-                    predicted_assists,
-                    2
-                )
-            })
+    predicted_sog = sog_model.predict(
+        X_sog
+    )
+
+    predicted_points = points_model.predict(
+        X_points
+    )
+
+    predicted_goals = goals_model.predict(
+        X_goals
+    )
+
+    predicted_assists = assists_model.predict(
+        X_assists
+    )
+
+    predictions = []
+
+    for index, (
+        player,
+        home
+    ) in enumerate(player_rows):
+        predictions.append({
+            "player_id": str(
+                player["player_id"]
+            ),
+            "player": player["player"],
+            "team": player["team"],
+            "position": player.get(
+                "position"
+            ),
+            "home": home,
+            "shots_on_goal": round(
+                float(predicted_sog[index]),
+                2
+            ),
+            "points": round(
+                float(predicted_points[index]),
+                2
+            ),
+            "goals": round(
+                float(predicted_goals[index]),
+                2
+            ),
+            "assists": round(
+                float(predicted_assists[index]),
+                2
+            )
+        })
 
     predictions.sort(
         key=lambda item: (
@@ -434,7 +474,6 @@ def get_skater_predictions(
     )
 
     return predictions
-
 
 def get_goalie_predictions(
     home_team_id,
