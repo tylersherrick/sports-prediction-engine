@@ -41,7 +41,7 @@ def load_saved_model(path):
 
     return (
         saved["model"],
-        saved["features"]
+        saved["features"],
     )
 
 
@@ -83,13 +83,13 @@ df = pd.read_csv(
     dtype={
         "game_id": str,
         "home_team_id": str,
-        "away_team_id": str
-    }
+        "away_team_id": str,
+    },
 )
 
 df["date"] = pd.to_datetime(
     df["date"],
-    utc=True
+    utc=True,
 )
 
 df = df.sort_values(
@@ -103,13 +103,13 @@ skater_df = pd.read_csv(
         "game_id": str,
         "player_id": str,
         "team_id": str,
-        "opponent_id": str
-    }
+        "opponent_id": str,
+    },
 )
 
 skater_df["date"] = pd.to_datetime(
     skater_df["date"],
-    utc=True
+    utc=True,
 )
 
 skater_df = skater_df.sort_values(
@@ -123,13 +123,13 @@ goalie_df = pd.read_csv(
         "game_id": str,
         "player_id": str,
         "team_id": str,
-        "opponent_id": str
-    }
+        "opponent_id": str,
+    },
 )
 
 goalie_df["date"] = pd.to_datetime(
     goalie_df["date"],
-    utc=True
+    utc=True,
 )
 
 goalie_df = goalie_df.sort_values(
@@ -200,7 +200,7 @@ def get_latest_team_row(team_id):
 def build_matchup(
     home_row,
     away_row,
-    features
+    features,
 ):
     row = {}
 
@@ -247,13 +247,13 @@ def build_matchup(
 
     return pd.DataFrame(
         [row],
-        columns=features
+        columns=features,
     )
 
 
 def get_latest_player_rows(
     data,
-    team_id
+    team_id,
 ):
     team_id = str(team_id)
 
@@ -283,7 +283,7 @@ def get_latest_player_rows(
         team
         .groupby(
             "player_id",
-            as_index=False
+            as_index=False,
         )
         .tail(1)
         .copy()
@@ -299,7 +299,7 @@ def get_latest_player_rows(
 def build_player_features(
     player_row,
     features,
-    home
+    home,
 ):
     row = {}
 
@@ -318,40 +318,40 @@ def build_player_features(
 
     return pd.DataFrame(
         [row],
-        columns=features
+        columns=features,
     )
 
 
 def get_skater_predictions(
     home_team_id,
-    away_team_id
+    away_team_id,
 ):
     player_rows = []
 
     teams = [
         (
             home_team_id,
-            True
+            True,
         ),
         (
             away_team_id,
-            False
-        )
+            False,
+        ),
     ]
 
     for (
         team_id,
-        home
+        home,
     ) in teams:
         players = get_latest_player_rows(
             skater_df,
-            team_id
+            team_id,
         )
 
         for _, player in players.iterrows():
             player_rows.append((
                 player,
-                home
+                home,
             ))
 
     if not player_rows:
@@ -367,7 +367,7 @@ def get_skater_predictions(
             build_player_features(
                 player,
                 sog_features,
-                home
+                home,
             ).iloc[0].to_dict()
         )
 
@@ -375,7 +375,7 @@ def get_skater_predictions(
             build_player_features(
                 player,
                 points_features,
-                home
+                home,
             ).iloc[0].to_dict()
         )
 
@@ -383,7 +383,7 @@ def get_skater_predictions(
             build_player_features(
                 player,
                 goals_features,
-                home
+                home,
             ).iloc[0].to_dict()
         )
 
@@ -391,28 +391,28 @@ def get_skater_predictions(
             build_player_features(
                 player,
                 assists_features,
-                home
+                home,
             ).iloc[0].to_dict()
         )
 
     X_sog = pd.DataFrame(
         sog_rows,
-        columns=sog_features
+        columns=sog_features,
     )
 
     X_points = pd.DataFrame(
         points_rows,
-        columns=points_features
+        columns=points_features,
     )
 
     X_goals = pd.DataFrame(
         goals_rows,
-        columns=goals_features
+        columns=goals_features,
     )
 
     X_assists = pd.DataFrame(
         assists_rows,
-        columns=assists_features
+        columns=assists_features,
     )
 
     predicted_sog = sog_model.predict(
@@ -435,7 +435,7 @@ def get_skater_predictions(
 
     for index, (
         player,
-        home
+        home,
     ) in enumerate(player_rows):
         predictions.append({
             "player_id": str(
@@ -449,35 +449,36 @@ def get_skater_predictions(
             "home": home,
             "shots_on_goal": round(
                 float(predicted_sog[index]),
-                2
+                2,
             ),
             "points": round(
                 float(predicted_points[index]),
-                2
+                2,
             ),
             "goals": round(
                 float(predicted_goals[index]),
-                2
+                2,
             ),
             "assists": round(
                 float(predicted_assists[index]),
-                2
-            )
+                2,
+            ),
         })
 
     predictions.sort(
         key=lambda item: (
             item["points"],
-            item["shots_on_goal"]
+            item["shots_on_goal"],
         ),
-        reverse=True
+        reverse=True,
     )
 
     return predictions
 
+
 def get_goalie_predictions(
     home_team_id,
-    away_team_id
+    away_team_id,
 ):
     predictions = []
 
@@ -497,28 +498,28 @@ def get_goalie_predictions(
     teams = [
         (
             home_team_id,
-            True
+            True,
         ),
         (
             away_team_id,
-            False
-        )
+            False,
+        ),
     ]
 
     for (
         team_id,
-        home
+        home,
     ) in teams:
         goalies = get_latest_player_rows(
             goalie_df,
-            team_id
+            team_id,
         )
 
         for _, goalie in goalies.iterrows():
             X = build_player_features(
                 goalie,
                 saves_features,
-                home
+                home,
             )
 
             predicted_saves = float(
@@ -531,7 +532,7 @@ def get_goalie_predictions(
 
             market = find_goalie_market(
                 player_name,
-                kalshi_markets
+                kalshi_markets,
             )
 
             prediction = {
@@ -543,9 +544,9 @@ def get_goalie_predictions(
                 "home": home,
                 "saves": round(
                     predicted_saves,
-                    2
+                    2,
                 ),
-                "kalshi": None
+                "kalshi": None,
             }
 
             if market:
@@ -585,7 +586,7 @@ def get_goalie_predictions(
                     "pick": pick,
                     "edge": round(
                         edge,
-                        2
+                        2,
                     ),
                     "price": price,
                     "yes_bid": market[
@@ -602,7 +603,7 @@ def get_goalie_predictions(
                     ],
                     "captured_at": market[
                         "captured_at"
-                    ]
+                    ],
                 }
 
             predictions.append(
@@ -611,7 +612,7 @@ def get_goalie_predictions(
 
     predictions.sort(
         key=lambda item: item["saves"],
-        reverse=True
+        reverse=True,
     )
 
     return predictions
@@ -621,9 +622,9 @@ def get_nhl_prediction(game_id):
     response = requests.get(
         SUMMARY_URL,
         params={
-            "event": game_id
+            "event": game_id,
         },
-        timeout=30
+        timeout=30,
     )
 
     response.raise_for_status()
@@ -634,11 +635,11 @@ def get_nhl_prediction(game_id):
         data
         .get(
             "header",
-            {}
+            {},
         )
         .get(
             "competitions",
-            []
+            [],
         )
     )
 
@@ -651,7 +652,7 @@ def get_nhl_prediction(game_id):
 
     competitors = competition.get(
         "competitors",
-        []
+        [],
     )
 
     home = next(
@@ -662,7 +663,7 @@ def get_nhl_prediction(game_id):
                 "homeAway"
             ) == "home"
         ),
-        None
+        None,
     )
 
     away = next(
@@ -673,7 +674,7 @@ def get_nhl_prediction(game_id):
                 "homeAway"
             ) == "away"
         ),
-        None
+        None,
     )
 
     if (
@@ -700,9 +701,35 @@ def get_nhl_prediction(game_id):
         away["team"]["id"]
     )
 
+    home_abbreviation = home[
+        "team"
+    ].get(
+        "abbreviation",
+        "",
+    ).lower()
+
+    away_abbreviation = away[
+        "team"
+    ].get(
+        "abbreviation",
+        "",
+    ).lower()
+
+    home_logo = (
+        "https://a.espncdn.com/i/teamlogos/"
+        "nhl/500/"
+        f"{home_abbreviation}.png"
+    )
+
+    away_logo = (
+        "https://a.espncdn.com/i/teamlogos/"
+        "nhl/500/"
+        f"{away_abbreviation}.png"
+    )
+
     game_date = pd.to_datetime(
         competition["date"],
-        utc=True
+        utc=True,
     )
 
     home_row = get_latest_team_row(
@@ -725,7 +752,7 @@ def get_nhl_prediction(game_id):
     X_winner = build_matchup(
         home_row,
         away_row,
-        winner_features
+        winner_features,
     )
 
     home_probability = float(
@@ -757,25 +784,25 @@ def get_nhl_prediction(game_id):
         "pick": winner,
         "probability": round(
             winner_probability,
-            3
+            3,
         ),
         "fair_odds": american_odds(
             winner_probability
         ),
         "home_probability": round(
             home_probability,
-            3
+            3,
         ),
         "away_probability": round(
             away_probability,
-            3
-        )
+            3,
+        ),
     }
 
     X_puck_line = build_matchup(
         home_row,
         away_row,
-        puck_line_features
+        puck_line_features,
     )
 
     predicted_home_margin = float(
@@ -806,18 +833,18 @@ def get_nhl_prediction(game_id):
         "team": puck_line_team,
         "line": round(
             puck_line_value,
-            2
+            2,
         ),
         "predicted_home_margin": round(
             predicted_home_margin,
-            2
-        )
+            2,
+        ),
     }
 
     X_total = build_matchup(
         home_row,
         away_row,
-        total_features
+        total_features,
     )
 
     predicted_total = float(
@@ -829,18 +856,18 @@ def get_nhl_prediction(game_id):
     total_result = {
         "predicted_total": round(
             predicted_total,
-            2
-        )
+            2,
+        ),
     }
 
     skaters = get_skater_predictions(
         home_team_id,
-        away_team_id
+        away_team_id,
     )
 
     goalies = get_goalie_predictions(
         home_team_id,
-        away_team_id
+        away_team_id,
     )
 
     market_odds = get_nhl_odds(
@@ -853,21 +880,21 @@ def get_nhl_prediction(game_id):
         for (
             team,
             probability,
-            odds
+            odds,
         ) in [
             (
                 home_team,
                 home_probability,
                 market_odds[
                     "moneyline"
-                ]["home"]
+                ]["home"],
             ),
             (
                 away_team,
                 away_probability,
                 market_odds[
                     "moneyline"
-                ]["away"]
+                ]["away"],
             ),
         ]:
             if odds is None:
@@ -883,24 +910,24 @@ def get_nhl_prediction(game_id):
                 "team": team,
                 "model_probability": round(
                     probability,
-                    3
+                    3,
                 ),
                 "market_odds": odds,
                 "breakeven_probability": round(
                     breakeven,
-                    3
+                    3,
                 ),
                 "edge": round(
                     probability
                     - breakeven,
-                    3
+                    3,
                 ),
                 "expected_value": round(
                     expected_value(
                         probability,
-                        odds
+                        odds,
                     ),
-                    3
+                    3,
                 ),
             })
 
@@ -922,6 +949,8 @@ def get_nhl_prediction(game_id):
         ),
         "away_team": away_team,
         "home_team": home_team,
+        "away_logo": away_logo,
+        "home_logo": home_logo,
         "winner": winner_result,
         "puck_line": puck_line_result,
         "total": total_result,
